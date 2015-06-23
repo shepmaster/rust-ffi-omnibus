@@ -1,0 +1,12 @@
+title: The Rust FFI Omnibus
+email: your-email@domain.com
+description: >
+  A collection of examples of using Rust from other languages such as C,
+  Ruby, or Python.
+baseurl: "/rust-ffi-omnibus"
+url: "http://jakegoulding.com"
+twitter_username: jakegoulding
+github_username:  shepmaster
+
+# Build settings
+markdown: kramdown
