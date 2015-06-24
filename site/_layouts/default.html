@@ -3,14 +3,21 @@
 
   {% include head.html %}
 
-  <body>
+  <body class="site">
 
     {% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
+    <div class="site-content content">
+      <main class="content-content">
         {{ content }}
-      </div>
+      </main>
+
+      <nav class="content-navigation">
+        <ul>
+          <li><a href="#">Ruby</a></li>
+          <li><a href="#">Python</a></li>
+        </ul>
+      </nav>
     </div>
 
     {% include footer.html %}
