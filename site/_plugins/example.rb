@@ -12,6 +12,10 @@ module Jekyll
     end
 
     def excerpt
+      CGI.escape_html(raw_excerpt)
+    end
+
+    def raw_excerpt
       return contents unless has_excerpt?
 
       first_delim = contents.lines.drop_while { |l| !l.include?('[excerpt]') }
