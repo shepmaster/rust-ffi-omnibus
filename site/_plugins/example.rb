@@ -7,6 +7,7 @@ module Jekyll
     end
 
     def render(context)
+      @context = context
       "<pre><code>#{excerpt}</code></pre>"
     end
 
@@ -18,7 +19,15 @@ module Jekyll
     end
 
     def contents
-      File.read(@file)
+      File.read(filename)
+    end
+
+    def filename
+      File.join(filebase, @file)
+    end
+
+    def filebase
+      @context.registers[:page].fetch('examples', './')
     end
   end
 end
