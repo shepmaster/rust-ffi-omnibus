@@ -12,14 +12,20 @@ module Jekyll
     end
 
     def excerpt
+      return contents unless has_excerpt?
+
       first_delim = contents.lines.drop_while { |l| !l.include?('[excerpt]') }
       after_delim = first_delim[1..-1]
       between_delim = after_delim.take_while { |l| !l.include?('[excerpt]') }
       between_delim.join('')
     end
 
+    def has_excerpt?
+      contents.include? '[excerpt]'
+    end
+
     def contents
-      File.read(filename)
+      @contents ||= File.read(filename)
     end
 
     def filename
