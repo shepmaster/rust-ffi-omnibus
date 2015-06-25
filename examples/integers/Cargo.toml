@@ -1,0 +1,13 @@
+[package]
+name = "integers"
+version = "0.1.0"
+authors = ["Jake Goulding <jake.goulding@gmail.com>"]
+
+# [excerpt]
+[dependencies]
+libc = "*"
+
+[lib]
+crate-type = ["dylib"]
+# [excerpt]
+name = "integers"
