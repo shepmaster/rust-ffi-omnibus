@@ -6,7 +6,6 @@ description: >
 baseurl: "/rust-ffi-omnibus"
 url: "http://jakegoulding.com"
 twitter_username: jakegoulding
-github_username:  shepmaster
 
 # Build settings
 markdown: kramdown

@@ -68,7 +68,7 @@
   @include grid;
 
   &-social-media {
-    @include grid-cell(1, 12);
+    @include grid-cell(2, 12);
     @include grid-offset(2, 12);
 
     list-style: none;
@@ -76,7 +76,7 @@
 
   &-description {
     @include grid-cell(3, 12);
-    @include grid-offset(4, 12);
+    @include grid-offset(3, 12);
   }
 }
 
