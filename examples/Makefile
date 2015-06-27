@@ -8,3 +8,5 @@ dir := integers
 include ${dir}/rules.mk
 dir := string_arguments
 include ${dir}/rules.mk
+dir := slice_arguments
+include ${dir}/rules.mk

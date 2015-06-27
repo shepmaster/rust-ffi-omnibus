@@ -1,0 +1,11 @@
+[package]
+name = "slice_arguments"
+version = "0.1.0"
+authors = ["Jake Goulding <jake.goulding@gmail.com>"]
+
+[dependencies]
+libc = "*"
+
+[lib]
+name = "slice_arguments"
+crate-type = ["dylib"]
