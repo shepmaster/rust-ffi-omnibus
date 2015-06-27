@@ -20,7 +20,7 @@ ${TEST_DIR_${d}}/c-test: ${d}/c-example ${TEST_DIR_${d}}
 
 ${TEST_DIR_${d}}/rb-test: LIB_DIR := ${LIB_DIR_${d}}
 ${TEST_DIR_${d}}/rb-test: ${d}/src/main.rb ${TEST_DIR_${d}} ${LIB_${d}}
-	LD_LIBRARY_PATH=${LIB_DIR} ruby $< > $@
+	LD_LIBRARY_PATH=${LIB_DIR} bundle exec ruby $< > $@
 
 ${TEST_DIR_${d}}/py-test: LIB_DIR := ${LIB_DIR_${d}}
 ${TEST_DIR_${d}}/py-test: ${d}/src/main.py ${TEST_DIR_${d}} ${LIB_${d}}
