@@ -14,8 +14,9 @@ ${d}/c-example: ${d}/src/main.c ${LIB_${d}}
 ${TEST_DIR_${d}}:
 	mkdir -p $@
 
+${TEST_DIR_${d}}/c-test: LIB_DIR := ${LIB_DIR_${d}}
 ${TEST_DIR_${d}}/c-test: ${d}/c-example ${TEST_DIR_${d}}
-	$< > $@
+	LD_LIBRARY_PATH=${LIB_DIR} $< > $@
 
 ${TEST_DIR_${d}}/rb-test: LIB_DIR := ${LIB_DIR_${d}}
 ${TEST_DIR_${d}}/rb-test: ${d}/src/main.rb ${TEST_DIR_${d}} ${LIB_${d}}
