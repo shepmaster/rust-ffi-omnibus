@@ -1,11 +1,36 @@
 // Grid mixins
 
-@mixin grid {
+@mixin display-flex {
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
 }
 
+@mixin flex-wrap($type) {
+  -webkit-flex-wrap: $type;
+  -ms-flex-wrap: $type;
+  flex-wrap: $type;
+}
+
+@mixin flex-direction($dir) {
+  -webkit-flex-direction: $dir;
+  -ms-flex-direction: $dir;
+  flex-direction: $dir;
+}
+
+@mixin flex($arg) {
+  -webkit-flex: $arg;
+  -ms-flex: $arg;
+  flex: $arg;
+}
+
+@mixin grid {
+  @include display-flex;
+  @include flex-wrap(wrap);
+}
+
 @mixin grid-cell($width, $total) {
-  flex: 0 0 (100% * $width / $total);
+  @include flex(0 0 (100% * $width / $total));
 }
 
 @mixin grid-offset($offset, $total) {
@@ -15,12 +40,12 @@
 // Sticky footer
 
 .site {
-  display: flex;
+  @include display-flex;
   min-height: 100vh;
-  flex-direction: column;
+  @include flex-direction(column);
 
   &-content {
-    flex: 1;
+    @include flex(1);
   }
 }
 
