@@ -1,5 +1,7 @@
 // Grid mixins
 
+$large: "(min-width: 800px)";
+
 @mixin display-flex {
   display: -webkit-flex;
   display: -ms-flex;
@@ -55,12 +57,20 @@
   border-bottom: 1px solid $grey-color-light;
 
   &-title {
-    @include grid-cell(8, 12);
-    @include grid-offset(2, 12);
+    @include grid-cell(10, 12);
+    @include grid-offset(1, 12);
 
-    font-size: 2em;
-    line-height: 3.5em;
+    font-size: 1.5em;
+    line-height: 1.5em;
     letter-spacing: -1px;
+
+    @media #{$large} {
+      @include grid-cell(8, 12);
+      @include grid-offset(2, 12);
+
+      font-size: 2em;
+      line-height: 3.5em;
+    }
 
     &,
     &:visited {
@@ -75,12 +85,23 @@
   padding: $spacing-unit 0;
 
   &-content {
-    @include grid-cell(6, 12);
-    @include grid-offset(2, 12);
+    @include grid-cell(10, 12);
+    @include grid-offset(1, 12);
+
+    @media #{$large} {
+      @include grid-cell(6, 12);
+      @include grid-offset(2, 12);
+    }
   }
 
   &-navigation {
-    @include grid-cell(2, 12);
+    @include grid-cell(10, 12);
+    @include grid-offset(1, 12);
+
+    @media #{$large} {
+      @include grid-cell(2, 12);
+      @include grid-offset(0, 12);
+    }
   }
 }
 
@@ -93,15 +114,25 @@
   @include grid;
 
   &-social-media {
-    @include grid-cell(2, 12);
-    @include grid-offset(2, 12);
+    @include grid-cell(10, 12);
+    @include grid-offset(1, 12);
+
+    @media #{$large} {
+      @include grid-cell(2, 12);
+      @include grid-offset(2, 12);
+    }
 
     list-style: none;
   }
 
   &-description {
-    @include grid-cell(3, 12);
-    @include grid-offset(3, 12);
+    @include grid-cell(10, 12);
+    @include grid-offset(1, 12);
+
+    @media #{$large} {
+      @include grid-cell(3, 12);
+      @include grid-offset(3, 12);
+    }
   }
 }
 
@@ -111,7 +142,12 @@
   font-size: 80%;
 
   &-text {
-    @include grid-cell(8, 12);
-    @include grid-offset(2, 12);
+    @include grid-cell(10, 12);
+    @include grid-offset(1, 12);
+
+    @media #{$large} {
+      @include grid-cell(8, 12);
+      @include grid-offset(2, 12);
+    }
   }
 }
