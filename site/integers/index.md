@@ -41,3 +41,19 @@ This can be run with `LD_LIBRARY_PATH=target/debug/ ruby
 {% example src/main.py %}
 
 This can be run with `LD_LIBRARY_PATH=target/debug python src/main.py`.
+
+## Haskell
+
+{% example src/main.hs %}
+
+We have to enable the `ForeignFunctionInterface` language extension and
+import the relevant low-level types before we can include a
+`foreign import` declaration. This includes the calling convention
+(`ccall`), the symbol name (`"addition"`), the corresponding Haskell
+name (`addition`), and the type of the function. This function is
+effectively pure, so we don't include `IO` in the type, but an
+observably impure function would want to return an `IO` value to
+indicate that it has side-effects.
+
+This can be compiled using
+`ghc src/main.hs target/debug/libintegers.so -o haskell-example`.

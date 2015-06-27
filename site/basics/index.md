@@ -33,6 +33,11 @@ All Ruby examples will use Ruby 2.2 and the [FFI gem][gem].
 
 All Python examples will use Python 2.7 and the [ctypes library][ctypes].
 
+## Haskell
+
+All Haskell examples will use GHC 7.10 with the `ForeignFunctionInterface`
+language extension and only the `base` library which comes with GHC.
+
 [official]: https://doc.rust-lang.org/book/ffi.html
 [Cargo]: https://crates.io/
 [libc]: http://doc.rust-lang.org/libc/libc/index.html

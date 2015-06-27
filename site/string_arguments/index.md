@@ -70,3 +70,12 @@ string.
 
 The ctypes library automatically converts Python strings to the
 appropriate C string.
+
+## Haskell
+
+{% example src/main.hs %}
+
+The `Foreign.C.String` module has support for converting Haskell's
+string representation to C's packed-byte representation. We can
+create one with the `newCString` function, and then pass the
+`CString` value to our foreign call.
