@@ -14,8 +14,9 @@
 
       <nav class="content-navigation">
         <ul>
-          <li><a href="#">Ruby</a></li>
-          <li><a href="#">Python</a></li>
+          {% for pg in site.data.table_of_contents %}
+            <li><a href="{{ pg.page | prepend: site.baseurl }}">{{ pg.title }}</a></li>
+          {% endfor %}
         </ul>
       </nav>
     </div>
