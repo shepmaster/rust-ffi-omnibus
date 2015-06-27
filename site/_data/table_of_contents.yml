@@ -9,3 +9,6 @@
 
 - title: String Arguments
   page: /string_arguments/
+
+- title: Slice Arguments
+  page: /slice_arguments/
