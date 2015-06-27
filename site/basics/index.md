@@ -10,11 +10,6 @@ language you will be calling from. You should have read the
 [official FFI documentation][official], but some basics will be
 covered here.
 
-# Example code
-
-All examples are kept in a [GitHub repository][repo] and are tested
-for correctness. Check out each example for complete, working code.
-
 ## Rust
 
 All Rust examples will use [Cargo] and the [libc crate][libc]. Each
@@ -40,7 +35,6 @@ All Python examples will use Python 2.7 and the [ctypes library][ctypes].
 
 [official]: https://doc.rust-lang.org/book/ffi.html
 [Cargo]: https://crates.io/
-[repo]: https://github.com/shepmaster/rust-ffi-omnibus
 [libc]: http://doc.rust-lang.org/libc/libc/index.html
 [dyn-stat]: http://doc.crates.io/manifest.html#building-dynamic-or-static-libraries
 [gem]: https://github.com/ffi/ffi
