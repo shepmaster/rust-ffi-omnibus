@@ -5,7 +5,7 @@ before_install:
 - cd examples && bundle install ; cd ..
 script:
 - make -C examples
-- cd site && jekyll build --destination ../built-site ; cd ..
+- cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
 after_success: "./deploy_gh_pages.sh"
 env:
   global:
