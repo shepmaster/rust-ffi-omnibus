@@ -1,6 +1,9 @@
 - title: Index
   page: /
 
+- title: Basics
+  page: /basics/
+
 - title: Integers
   page: /integers/
 
