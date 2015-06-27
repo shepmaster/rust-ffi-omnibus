@@ -60,10 +60,12 @@
 }
 
 .site-footer {
-  @include grid;
-
   border-top: 1px solid $grey-color-light;
   padding: $spacing-unit 0;
+}
+
+.footer-meta {
+  @include grid;
 
   &-social-media {
     @include grid-cell(1, 12);
@@ -75,5 +77,16 @@
   &-description {
     @include grid-cell(3, 12);
     @include grid-offset(4, 12);
+  }
+}
+
+.footer-license {
+  @include grid;
+
+  font-size: 80%;
+
+  &-text {
+    @include grid-cell(8, 12);
+    @include grid-offset(2, 12);
   }
 }
