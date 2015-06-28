@@ -50,3 +50,15 @@ store our integers. Once created, we copy the values into it using
 Calling from Python requires more work than previous examples. This
 time, we create a new type to store our integers and instantiate the
 type using the values.
+
+## Haskell
+
+{% example src/main.hs %}
+
+For this example, we can use the `withArrayLen` function, which takes
+a Haskell array whose contents are `Storable` (i.e. serializable to
+byte sequences that C can understand) and produces a packed array of
+those values, which it then passes, along with the array's length, to
+a callback function. In this case, it passes the array's length as
+type `Int`, which we convert into the expected `CUInt` type using
+the `fromIntegral` function.
