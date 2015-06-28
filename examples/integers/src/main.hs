@@ -1,8 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
 
-import Foreign.C.Types (CUInt(..))
+import Data.Word (Word32)
 
-foreign import ccall "addition" addition :: CUInt -> CUInt -> CUInt
+foreign import ccall "addition"
+  addition :: Word32 -> Word32 -> Word32
 
 main :: IO ()
 main = print (addition 1 2)
