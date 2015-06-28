@@ -38,6 +38,24 @@ All Python examples will use Python 2.7 and the [ctypes library][ctypes].
 All Haskell examples will use GHC 7.10 with the `ForeignFunctionInterface`
 language extension and only the `base` library which comes with GHC.
 
+## Running Examples
+
+When running examples, you need to ensure the Rust dynamic library
+can be located by the system.
+
+With most shells on Mac OS X and Linux, this can be done by prefixing
+commands with `LD_LIBRARY_PATH=target/debug`.  For example, to run a
+Python example, you might use
+`LD_LIBRARY_PATH=target/debug python src/main.py` from the example
+directory.
+
+On Windows, the simplest course of action is to copy the compiled
+dynamic library into the current working directory before running the
+examples.  You only need the `.dll` file.  Also note that when
+running Python examples, you may wish to use `py` instead of
+`python`, especially if you have multiple versions of Python
+installed.
+
 [official]: https://doc.rust-lang.org/book/ffi.html
 [Cargo]: https://crates.io/
 [libc]: http://doc.rust-lang.org/libc/libc/index.html
