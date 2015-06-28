@@ -1,6 +1,16 @@
 default: all
 .PHONY: default
 
+# Different platforms have different rules for shared library names
+OS := $(shell uname)
+ifeq (${OS},Darwin)
+shared_lib = lib${1}.dylib
+else ifeq (${OS},Linux)
+shared_lib = lib${1}.so
+else
+$(error Unknown platform, please define how shared libraries are named)
+endif
+
 TEST_DIR := test-output
 
 COMMON_TEST_RULES := tests.mk
