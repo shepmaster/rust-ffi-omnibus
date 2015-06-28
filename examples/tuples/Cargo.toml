@@ -1,0 +1,11 @@
+[package]
+name = "tuples"
+version = "0.1.0"
+authors = ["Jake Goulding <jake.goulding@gmail.com>"]
+
+[dependencies]
+libc = "*"
+
+[lib]
+name = "tuples"
+crate-type = ["dylib"]
