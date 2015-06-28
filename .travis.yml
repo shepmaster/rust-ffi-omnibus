@@ -1,5 +1,9 @@
 language: rust
 sudo: false
+addons:
+  apt:
+    packages:
+      - ghc
 before_install:
 - bundle install
 - cd examples && bundle install ; cd ..
