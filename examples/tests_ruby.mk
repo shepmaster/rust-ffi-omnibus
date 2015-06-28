@@ -9,4 +9,4 @@ ruby-test_${d}: EXPECTED := ${d}/expected-output
 ruby-test_${d}: ${TEST_DIR_${d}}/ruby-test
 	diff -q ${EXPECTED} $<
 
-all: ruby-test_${d}
+ruby: ruby-test_${d}

@@ -14,4 +14,4 @@ c-test_${d}: EXPECTED := ${d}/expected-output
 c-test_${d}: ${TEST_DIR_${d}}/c-test
 	diff -q ${EXPECTED} $<
 
-all: c-test_${d}
+c: c-test_${d}

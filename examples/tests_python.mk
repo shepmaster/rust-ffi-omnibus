@@ -9,4 +9,4 @@ python-test_${d}: EXPECTED := ${d}/expected-output
 python-test_${d}: ${TEST_DIR_${d}}/python-test
 	diff -q ${EXPECTED} $<
 
-all: python-test_${d}
+python: python-test_${d}

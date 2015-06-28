@@ -1,4 +1,5 @@
 default: all
+.PHONY: default
 
 TEST_DIR := test-output
 
@@ -14,3 +15,17 @@ dir := string_arguments
 include ${dir}/rules.mk
 dir := slice_arguments
 include ${dir}/rules.mk
+
+all: c ruby python
+.PHONY: all
+
+# Test only a single language
+#
+# These rules are here for documentation. The implementations will be
+# filled out by the respective tests_X.mk file
+
+c:
+ruby:
+python:
+
+.PHONY: c ruby python
