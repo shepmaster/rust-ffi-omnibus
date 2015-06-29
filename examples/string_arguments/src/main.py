@@ -1,9 +1,11 @@
+#!/usr/bin/env python2
 # coding: utf-8
 import sys, ctypes
 from ctypes import c_uint32, c_char_p
 
-extension = '.dylib' if sys.platform == 'darwin' else '.so'
-lib = ctypes.cdll.LoadLibrary("libstring_arguments" + extension)
+prefix = {'win32': ''}.get(sys.platform, 'lib')
+extension = {'darwin': '.dylib', 'win32': '.dll'}.get(sys.platform, '.so')
+lib = ctypes.cdll.LoadLibrary(prefix + "string_arguments" + extension)
 
 lib.how_many_characters.argtypes = (c_char_p,)
 lib.how_many_characters.restype = c_uint32
