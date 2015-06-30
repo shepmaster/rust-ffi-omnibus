@@ -79,3 +79,10 @@ The `Foreign.C.String` module has support for converting Haskell's
 string representation to C's packed-byte representation. We can
 create one with the `newCString` function, and then pass the
 `CString` value to our foreign call.
+
+## Node.js
+
+{% example src/main.js %}
+
+The `ffi` package automatically converts JavaScript strings to the
+appropriate C strings.
