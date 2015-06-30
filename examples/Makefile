@@ -18,8 +18,11 @@ default: all
 #
 # Review `tests_c.mk` for a documented example.
 #
-# For further reference, review *Recursive Make Considered Harmful*
-# and an implementation guilde at XXXXXTODOXXXXX
+# For further reference, review [*Recursive Make Considered
+# Harmful*][rec-make] and an [implementation guide][impl].
+#
+# [rec-make]: http://aegis.sourceforge.net/auug97.pdf
+# [impl]: http://evbergen.home.xs4all.nl/nonrecursive-make.html
 
 # Different platforms have different rules for shared library names
 OS := $(shell uname)
