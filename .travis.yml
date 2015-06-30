@@ -6,7 +6,7 @@ addons:
       - ghc
 before_install:
 - bundle install
-- cd examples && bundle install ; cd ..
+- cd examples && bundle install ; npm install ; cd ..
 script:
 - make -C examples
 - cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..

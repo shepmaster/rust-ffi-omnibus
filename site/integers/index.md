@@ -57,3 +57,14 @@ indicate that it has side-effects.
 
 This can be compiled using
 `ghc src/main.hs target/debug/libintegers.so -o haskell-example`.
+
+## Node.js
+
+{% example src/main.js %}
+
+The `Library` function specifies the name of a dynamic library to link with,
+along with a list of exported functions' signatures (in the form of
+`function_name: [return_type, [argument_types]]`). These functions are then
+available as methods of the object returned by `Library`.
+
+This can be run with `LD_LIBRARY_PATH=target/debug node src/main.js`.

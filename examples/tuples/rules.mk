@@ -6,6 +6,7 @@ LIB_NAME_${d} := tuples
 include ${TEST_C}
 include ${TEST_RUBY}
 include ${TEST_PYTHON}
+include ${TEST_NODEJS}
 
 d  := ${dirstack_${sp}}
 sp := ${basename ${sp}}

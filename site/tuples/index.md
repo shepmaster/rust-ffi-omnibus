@@ -51,3 +51,12 @@ types.
 
 Unfortunately, Haskell does not currently support passing or returning
 arbitrary structs. Pointer indirection is always required.
+
+## Node.js
+
+{% example src/main.js %}
+
+The [`ref-struct`][ref-struct] package allows us to build struct types
+which can be passed to FFI functions.
+
+[ref-struct]: https://www.npmjs.com/package/ref-struct

@@ -62,3 +62,15 @@ those values, which it then passes, along with the array's length, to
 a callback function. In this case, it passes the array's length as
 type `Int`, which we convert into the expected `CUInt` type using
 the `fromIntegral` function.
+
+## Node.js
+
+{% example src/main.js %}
+
+We need to use the [`ref`][ref] and [`ref-array`][ref-array] packages
+to wrap node.js memory buffers into array-like objects which can be easily
+manipulated from JavaScript. The `u32array` type (constructed using
+primitives from `ref.types`) can be then used in function signatures.
+
+[ref]: https://www.npmjs.com/package/ref
+[ref-array]: https://www.npmjs.com/package/ref-array
