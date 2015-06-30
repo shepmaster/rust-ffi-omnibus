@@ -1,6 +1,26 @@
 default: all
 .PHONY: default
 
+# Implementor notes
+#
+# This is a non-recursive Makefile. The major difference between a
+# non-recursive and recursive is that a single non-recursive Make
+# process contains the entire dependency tree.
+#
+# Practically, that means that every directory-specific target and
+# variable needs to be namespaced. The variable `d` can be included in
+# the variable name to provide this namespacing.
+#
+# Additionally, a set of includable Makefiles are provided, one for
+# each language. These can be included in each example's
+# `rules.mk`. These are the workhorse of the Make process, as they
+# define the targets to build and test each language's example.
+#
+# Review `tests_c.mk` for a documented example.
+#
+# For further reference, review *Recursive Make Considered Harmful*
+# and an implementation guilde at XXXXXTODOXXXXX
+
 # Different platforms have different rules for shared library names
 OS := $(shell uname)
 ifeq (${OS},Darwin)
