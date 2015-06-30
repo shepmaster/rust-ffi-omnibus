@@ -10,4 +10,3 @@ nodejs-test_${d}: ${TEST_DIR_${d}}/nodejs-test
 	diff -q ${EXPECTED} $<
 
 nodejs: nodejs-test_${d}
-

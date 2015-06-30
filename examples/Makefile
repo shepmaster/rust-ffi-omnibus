@@ -24,6 +24,9 @@ default: all
 # [rec-make]: http://aegis.sourceforge.net/auug97.pdf
 # [impl]: http://evbergen.home.xs4all.nl/nonrecursive-make.html
 
+# Delete partially built files from erroring targets
+.DELETE_ON_ERROR:
+
 # Different platforms have different rules for shared library names
 OS := $(shell uname)
 ifeq (${OS},Darwin)
