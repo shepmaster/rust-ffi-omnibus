@@ -1,6 +1,7 @@
 ---
 layout: default
 examples: ../examples/string_arguments/
+title: String Arguments
 ---
 
 # Rust functions with string arguments

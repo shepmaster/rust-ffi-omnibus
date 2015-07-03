@@ -1,6 +1,7 @@
 ---
 layout: default
 examples: ../examples/tuples
+title: Tuples
 ---
 
 # Rust functions that accept and return tuples

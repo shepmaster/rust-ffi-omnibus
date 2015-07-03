@@ -1,6 +1,7 @@
 ---
 layout: default
 examples: ../examples/slice_arguments
+title: Slice Arguments
 ---
 
 # Rust functions with slice arguments

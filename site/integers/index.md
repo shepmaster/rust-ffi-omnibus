@@ -1,6 +1,7 @@
 ---
 layout: default
 examples: ../examples/integers/
+title: Integers
 ---
 
 # Passing and returning integers
