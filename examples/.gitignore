@@ -6,7 +6,13 @@ test-output/
 # C
 */c-example
 
+# Ruby
+.ruby-dependencies
+
 # Haskell
 */haskell-example
 */src/main.hi
 */src/main.o
+
+# NodeJS
+.nodejs-dependencies
