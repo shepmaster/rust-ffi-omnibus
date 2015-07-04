@@ -1,0 +1,7 @@
+{
+  "preset": "node-style-guide",
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "requireCapitalizedConstructors": {
+    "allExcept": ["u32array"]
+  }
+}
