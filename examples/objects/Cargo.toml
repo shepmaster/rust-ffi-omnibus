@@ -1,0 +1,11 @@
+[package]
+name = "objects"
+version = "0.1.0"
+authors = ["Jake Goulding <jake.goulding@gmail.com>"]
+
+[dependencies]
+libc = "*"
+
+[lib]
+name = "objects"
+crate-type = ["dylib"]

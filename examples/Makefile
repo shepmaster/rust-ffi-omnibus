@@ -55,6 +55,8 @@ dir := slice_arguments
 include ${dir}/rules.mk
 dir := tuples
 include ${dir}/rules.mk
+dir := objects
+include ${dir}/rules.mk
 
 all: c ruby python haskell nodejs
 .PHONY: all
