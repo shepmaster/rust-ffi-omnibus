@@ -8,7 +8,7 @@ title: Integers
 
 Integers are the "hello world!" of FFI, as they are generally much
 easier to pass across the boundary. Let's create a library that adds
-two signed 32-bit numbers.
+two unsigned 32-bit numbers.
 
 {% example src/lib.rs %}
 
