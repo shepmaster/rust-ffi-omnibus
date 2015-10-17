@@ -29,14 +29,14 @@ impl ZipCodeDatabase {
 }
 
 #[no_mangle]
-pub fn zip_code_database_new() -> *mut ZipCodeDatabase {
+pub extern fn zip_code_database_new() -> *mut ZipCodeDatabase {
     unsafe {
         mem::transmute(Box::new(ZipCodeDatabase::new()))
     }
 }
 
 #[no_mangle]
-pub fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
+pub extern fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
     if ptr.is_null() { return }
     let _: Box<ZipCodeDatabase> = unsafe {
         mem::transmute(ptr)
@@ -44,7 +44,7 @@ pub fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
 }
 
 #[no_mangle]
-pub fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
+pub extern fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
     let database = unsafe {
         assert!(!ptr.is_null());
         &mut *ptr
@@ -53,7 +53,7 @@ pub fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
 }
 
 #[no_mangle]
-pub fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: *const c_char) -> uint32_t {
+pub extern fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: *const c_char) -> uint32_t {
     let database = unsafe {
         assert!(!ptr.is_null());
         &*ptr
