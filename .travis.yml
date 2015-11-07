@@ -4,6 +4,7 @@ addons:
   apt:
     packages:
       - ghc
+      - mono-complete
 before_install:
 - bundle install
 script:

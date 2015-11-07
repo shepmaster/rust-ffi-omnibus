@@ -77,3 +77,17 @@ along with a list of exported functions' signatures (in the form of
 available as methods of the object returned by `Library`.
 
 This can be run with `LD_LIBRARY_PATH=target/debug node src/main.js`.
+
+## C\#
+
+{% example src/main.cs %}
+
+We use the Platform Invoke functionality to access functions in a
+dynamic library. The `DllImport` attribute lists the name of the
+library that the function may be found in. These functions are then
+available as static methods of the class. To adhere to C# naming
+standards, we use the `EntryPoint` property to use a capitalized name
+for the exposed function.
+
+This can be compiled with `mcs -out:csharp-example src/main.cs` and
+executed with `LD_LIBRARY_PATH=target/debug mono csharp-example`.
