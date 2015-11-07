@@ -43,6 +43,12 @@ language extension and only the `base` library which comes with GHC.
 
 All node.js examples will use node 0.12 and the [ffi package][node-ffi].
 
+## C\#
+
+All C# examples will compile with Mono 2.10 (Travis CI) and 4.2. It is
+assumed that this code will work with the Microsoft CLR frameworks,
+but this is untested.
+
 ## Running Examples
 
 When running examples, you need to ensure the Rust dynamic library
