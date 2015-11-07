@@ -87,3 +87,9 @@ create one with the `newCString` function, and then pass the
 
 The `ffi` package automatically converts JavaScript strings to the
 appropriate C strings.
+
+## C\#
+
+{% example src/main.cs %}
+
+Native strings are automatically marshalled to C-compatible strings.
