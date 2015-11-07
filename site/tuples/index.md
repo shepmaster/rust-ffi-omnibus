@@ -61,3 +61,15 @@ The [`ref-struct`][ref-struct] package allows us to build struct types
 which can be passed to FFI functions.
 
 [ref-struct]: https://www.npmjs.com/package/ref-struct
+
+## C\#
+
+{% example src/main.cs %}
+
+To mirror the tuple structure definition, we create a `struct` using
+the `StructLayout` property and define the layout as sequential. We
+also provide some implicit conversion operators to make going between
+types fairly seamless.
+
+**Warning** - Tuples only exist in .NET 4.0 and above, so this code
+example is not automatically tested in Travis CI.
