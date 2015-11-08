@@ -11,8 +11,12 @@ enhancements, so it is only right to share how awesome they are.
 - [Getty Ritter] (Haskell)
 - [Steve Klabnik] (Rust)
 - [Zbigniew Siciarz] (node.js)
+- [llogiq] (Typos)
+- [masklinn] (Typos, Section Collapsing)
 
 [Daniel Keep]: https://github.com/DanielKeep
 [Getty Ritter]: https://github.com/aisamanra
 [Steve Klabnik]: https://github.com/steveklabnik
 [Zbigniew Siciarz]: https://github.com/zsiciarz
+[llogiq]: https://github.com/llogiq
+[masklinn]: https://github.com/masklinn
