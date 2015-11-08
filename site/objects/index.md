@@ -7,7 +7,7 @@ title: Objects
 # Using Rust objects from other languages
 
 Let's create a Rust object that will tell us how many people live in
-each USA zip code. We want to be able to use this logic in other
+each USA ZIP code. We want to be able to use this logic in other
 languages, but we only need to pass simple primitives like integers or
 strings across the FFI boundary. The object will have both mutable and
 immutable methods. Because we can not look inside the object, this is
@@ -129,3 +129,26 @@ functions with idiomatic JavaScript camel-case.
 
 To ensure that the resources are cleaned up, we use a `try` block and
 call the deallocation method in the `finally` block.
+
+## C\#
+
+{% example src/main.cs %}
+
+As the responsibilities for calling the native functions are going to
+be more spread out, we create a `Native` class to hold all the
+definitions.
+
+To ensure that the allocated memory is automatically freed, we create
+a subclass of the [`SafeHandle`][SafeHandle] class. This requires
+implementing `IsInvalid` and `ReleaseHandle`. Since our Rust function
+accepts freeing a `NULL` pointer, we can say that every pointer is
+valid.
+
+We can use our safe wrapper `ZipCodeDatabaseHandle` as the type of the
+FFI functions except for the free function. The actual pointer will be
+automatically marshalled to and from the wrapper.
+
+We also allow the `ZipCodeDatabase` to participate in the
+`IDisposable` protocol, forwarding to the safe wrapper.
+
+[SafeHandle]: https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.safehandle(v=vs.110).aspx
