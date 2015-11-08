@@ -50,3 +50,22 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+@media (min-width: $on-laptop) {
+    .foldable {
+        cursor: pointer;
+        &:before {
+            content: "\2296 ";
+        }
+        &.folded {
+            &:before {
+                content: "\2295 ";
+            }
+            &+p, &+p+p, &+p+p+p, &+p+p+p+p, &+p+p+p+p+p,
+            &+pre, &+pre+p, &+pre+p+p, &+pre+p+p+p, &+pre+p+p+p+p,
+            &+pre+p+p+p+p+p, &+pre+p+p+p+p+p+p {
+                display: none;
+            }
+        }
+    }
+}
