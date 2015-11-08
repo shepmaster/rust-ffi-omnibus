@@ -45,6 +45,7 @@ TEST_RUBY := tests_ruby.mk
 TEST_PYTHON := tests_python.mk
 TEST_HASKELL := tests_haskell.mk
 TEST_NODEJS := tests_nodejs.mk
+TEST_CSHARP := tests_csharp.mk
 TEST_ALL_LANGUAGES := tests_all.mk
 
 dir := integers
@@ -58,7 +59,7 @@ include ${dir}/rules.mk
 dir := objects
 include ${dir}/rules.mk
 
-all: c ruby python haskell nodejs
+all: c ruby python haskell nodejs csharp
 .PHONY: all
 
 # Test only a single language
@@ -71,5 +72,6 @@ ruby:
 python:
 haskell:
 nodejs:
+csharp:
 
-.PHONY: c ruby python haskell nodejs
+.PHONY: c ruby python haskell nodejs csharp

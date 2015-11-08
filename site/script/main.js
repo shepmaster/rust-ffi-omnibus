@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  var foldables = {c: 1, python: 1, ruby: 1, haskell: 1, nodejs: 1};
+  // C# becomes "c-1" as an identifier...
+  var foldables = {c: 1, python: 1, ruby: 1, haskell: 1, nodejs: 1, 'c-1': 1};
 
   document.addEventListener('DOMContentLoaded', function () {
     var titles = document.getElementsByTagName('h2');

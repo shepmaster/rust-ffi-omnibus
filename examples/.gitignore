@@ -16,3 +16,6 @@ test-output/
 
 # NodeJS
 .nodejs-dependencies
+
+# C#
+*/csharp-example

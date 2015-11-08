@@ -75,3 +75,16 @@ primitives from `ref.types`) can be then used in function signatures.
 
 [ref]: https://www.npmjs.com/package/ref
 [ref-array]: https://www.npmjs.com/package/ref-array
+
+## C\#
+
+{% example src/main.cs %}
+
+Passing an array is complicated a bit as we need to pass both a
+pointer to the data as well as the length of the array. Unlike
+previous examples, we bring in the non-idiomatic `snake_case` function
+as a private method. We can then add a public method that wraps the
+private one and provides the expected interface.
+
+The C code uses a `size_t`, a type whose size changes depending on
+the platform. To mirror that, we use a `UIntPtr`.

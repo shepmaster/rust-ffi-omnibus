@@ -4,10 +4,11 @@ addons:
   apt:
     packages:
       - ghc
+      - mono-complete
 before_install:
 - bundle install
 script:
-- make -C examples
+- RUNNING_IN_TRAVIS_CI=true make -C examples
 - cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
 after_success: "./deploy_gh_pages.sh"
 env:
