@@ -33,6 +33,7 @@ $large: "(min-width: 800px)";
 
 @mixin grid-cell($width, $total) {
   @include flex(0 0 (100% * $width / $total));
+  max-width: (100% * $width / $total);
 }
 
 @mixin grid-offset($offset, $total) {
