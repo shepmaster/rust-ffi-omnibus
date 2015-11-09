@@ -4,7 +4,11 @@ immutable ZipCodeDatabase
     ptr::Ptr{Void}
 
     function ZipCodeDatabase()
-        new(ccall((:zip_code_database_new, :libobjects), Ptr{Void}, ()))
+        zcd = new(ccall((:zip_code_database_new, :libobjects), Ptr{Void}, ()))
+
+        finalizer(zcd, free)
+
+        return zcd
     end
 end
 

@@ -1,7 +1,7 @@
 Libdl.dlopen("libtuples")
 
 # can't call this Tuple because of type conflict with Tuple{}
-immutable TupleStruct
+type TupleStruct
     x::UInt32
     y::UInt32
 end

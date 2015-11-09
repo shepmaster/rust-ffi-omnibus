@@ -93,3 +93,10 @@ appropriate C strings.
 {% example src/main.cs %}
 
 Native strings are automatically marshalled to C-compatible strings.
+
+## Julia
+
+{% example src/main.jl %}
+
+Julia's UTF8String and ASCIIString types (the defaults for literals) 
+are automatically converted to C strings by `ccall`.

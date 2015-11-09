@@ -91,3 +91,16 @@ for the exposed function.
 
 This can be compiled with `mcs -out:csharp-example src/main.cs` and
 executed with `LD_LIBRARY_PATH=target/debug mono csharp-example`.
+
+## Julia
+
+{% example src/main.jl %}
+
+The `dlopen` function specifies the name of a dynamic library to link with.
+Following that function call, symbols from that library are available for use
+with `ccall`. `ccall` is passed the function name and library name, the
+return type of the function, the input argument types, and the input arguments.
+The input arguments will be converted to the input types by `ccall`.
+
+This can be run with `LD_LIBRARY_PATH=target/debug/ julia
+./src/main.jl`

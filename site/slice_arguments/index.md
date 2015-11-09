@@ -88,3 +88,10 @@ private one and provides the expected interface.
 
 The C code uses a `size_t`, a type whose size changes depending on
 the platform. To mirror that, we use a `UIntPtr`.
+
+## Julia
+
+{% example src/main.jl %}
+
+Passing arrays as pointer arguments in Julia is straightforward, but
+we need to ensure the element type corresponds to the pointer type.
