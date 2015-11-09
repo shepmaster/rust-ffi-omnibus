@@ -1,7 +1,7 @@
 extern crate libc;
 
 use libc::{c_char, uint32_t};
-use std::{mem, str};
+use std::str;
 use std::collections::HashMap;
 use std::ffi::CStr;
 
@@ -30,17 +30,13 @@ impl ZipCodeDatabase {
 
 #[no_mangle]
 pub extern fn zip_code_database_new() -> *mut ZipCodeDatabase {
-    unsafe {
-        mem::transmute(Box::new(ZipCodeDatabase::new()))
-    }
+    Box::into_raw(Box::new(ZipCodeDatabase::new()))
 }
 
 #[no_mangle]
 pub extern fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
     if ptr.is_null() { return }
-    let _: Box<ZipCodeDatabase> = unsafe {
-        mem::transmute(ptr)
-    };
+    unsafe { Box::from_raw(ptr); }
 }
 
 #[no_mangle]

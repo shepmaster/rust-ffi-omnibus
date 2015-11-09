@@ -24,19 +24,15 @@ object is always provided as the first argument.
 
 To create a new instance of object, we box the result of the object's
 constructor. This places the struct onto the heap where it will have a
-stable memory address. This address is unsafely converted into a raw
-pointer using [`mem::transmute`][transmute].
+stable memory address. This address is converted into a raw pointer
+using [`Box::into_raw`][into_raw].
 
 This pointer points at memory allocated by Rust; memory allocated by
-Rust **must** be deallocated by Rust. We use `mem::transmute` to
-convert the pointer back into a `Box<ZipCodeDatabase>` when the object
-is to be freed. Unlike other functions, we *do* allow `NULL` to be
-passed, but simply do nothing in that case. This is a nicety for
-client programmers.
-
-A pair of unstable functions, [`Box::into_raw`][into_raw] and
-[`Box::from_raw`][from_raw], exist that promise to make this process a
-bit more ergonomic in the future.
+Rust **must** be deallocated by Rust. We use
+[`Box::from_raw`][from_raw] to convert the pointer back into a
+`Box<ZipCodeDatabase>` when the object is to be freed. Unlike other
+functions, we *do* allow `NULL` to be passed, but simply do nothing
+in that case. This is a nicety for client programmers.
 
 To create a reference from a raw pointer, you can use the terse syntax
 `&*`, which indicates that the pointer should be dereferenced and then
@@ -50,9 +46,8 @@ deallocation function, or from calling it more than once. Memory
 management and safety guarantees are completely in the hands of the
 programmer.
 
-[transmute]: https://doc.rust-lang.org/std/mem/fn.transmute.html
-[into_raw]: https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html#method.into_raw
-[from_raw]: https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html#method.from_raw
+[into_raw]: https://doc.rust-lang.org/std/boxed/struct.Box.html#method.into_raw
+[from_raw]: https://doc.rust-lang.org/std/boxed/struct.Box.html#method.from_raw
 
 ## C
 
