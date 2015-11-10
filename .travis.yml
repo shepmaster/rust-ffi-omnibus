@@ -2,13 +2,16 @@ language: rust
 sudo: false
 addons:
   apt:
+    sources:
+      - mono
+      - mono-libtiff-compat
     packages:
       - ghc
-      - mono-complete
+      - mono-devel
 before_install:
 - bundle install
 script:
-- RUNNING_IN_TRAVIS_CI=true make -C examples
+- make -C examples
 - cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
 after_success: "./deploy_gh_pages.sh"
 env:
