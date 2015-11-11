@@ -1,6 +1,6 @@
 Libdl.dlopen("libobjects")
 
-immutable ZipCodeDatabase
+type ZipCodeDatabase
     ptr::Ptr{Void}
 
     function ZipCodeDatabase()
