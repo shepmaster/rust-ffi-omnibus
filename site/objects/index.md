@@ -16,7 +16,7 @@ often referred to as an *opaque object* or an *opaque pointer*.
 {% example src/lib.rs %}
 
 The `struct` is defined in a normal way for Rust. One `extern`
-function is created for each each function of the object. C has no
+function is created for each function of the object. C has no
 built-in namespacing concept, so it is normal to prefix each function
 with a package name and/or a type name. For this example, we use
 `zip_code_database`. Following normal C conventions, a pointer to the
