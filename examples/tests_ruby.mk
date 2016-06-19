@@ -16,7 +16,7 @@ endif
 
 ${TEST_DIR_${d}}/ruby-test: LIB_DIR := ${LIB_DIR_${d}}
 ${TEST_DIR_${d}}/ruby-test: ${d}/src/main.rb ${TEST_DIR_${d}} ${LIB_${d}} ${RUBY_DEPENDENCIES}
-	LD_LIBRARY_PATH=${LIB_DIR} bundle exec ruby $< > $@
+	bundle exec bash -c "LD_LIBRARY_PATH=${LIB_DIR} ruby $<" > $@
 
 .PHONY: ruby-test_${d}
 ruby-test_${d}: EXPECTED := ${d}/expected-output
