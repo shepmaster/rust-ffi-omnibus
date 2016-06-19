@@ -26,14 +26,10 @@ requires an `unsafe` block as we will be dereferencing a raw pointer,
 which the Rust compiler cannot verify meets all the safety guarantees
 so the programmer must do it instead.
 
-3. Convert the C string to a slice of `u8` and validate that the bytes
-are valid UTF-8.
+3. Ensure that the C string is valid UTF-8 and convert it to a Rust
+string slice.
 
 4. Use the string slice.
-
-Note that a future version of Rust will stabilize the method
-[`CStr::to_str`][to_str], which provides a nicer wrapper for the
-conversion to bytes and UTF-8 validation.
 
 In this example, we are simply aborting the program if any of our
 preconditions fail. Each use case must evaluate what are appropriate
