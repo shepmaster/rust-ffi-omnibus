@@ -58,6 +58,6 @@ pub extern fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: 
         assert!(!zip.is_null());
         CStr::from_ptr(zip)
     };
-    let zip_str = str::from_utf8(zip.to_bytes()).unwrap();
+    let zip_str = zip.to_str().unwrap();
     database.population_of(zip_str)
 }

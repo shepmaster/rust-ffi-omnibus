@@ -12,6 +12,6 @@ pub extern fn how_many_characters(s: *const c_char) -> uint32_t {
         CStr::from_ptr(s)
     };
 
-    let r_str = str::from_utf8(c_str.to_bytes()).unwrap();
+    let r_str = c_str.to_str().unwrap();
     r_str.chars().count() as uint32_t
 }
