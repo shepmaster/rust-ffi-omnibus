@@ -147,3 +147,12 @@ We also allow the `ZipCodeDatabase` to participate in the
 `IDisposable` protocol, forwarding to the safe wrapper.
 
 [SafeHandle]: https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.safehandle(v=vs.110).aspx
+
+## Julia
+
+{% example src/main.jl %}
+
+A type wrapping a void pointer is created to aid with method dispatch.
+The constructor for this type attaches a "finalizer" function to new
+instances that causes `free` to be called when the instance is deleted
+by Julia's garbage collector.

@@ -49,6 +49,10 @@ All C# examples will compile with Mono 2.10 (Travis CI) and 4.2. It is
 assumed that this code will work with the Microsoft CLR frameworks,
 but this is untested.
 
+## Julia
+
+All Julia examples will use Julia 0.4.
+
 ## Running Examples
 
 When running examples, you need to ensure the Rust dynamic library

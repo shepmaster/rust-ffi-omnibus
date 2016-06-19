@@ -70,3 +70,13 @@ To mirror the tuple structure definition, we create a `struct` using
 the `StructLayout` property and define the layout as sequential. We
 also provide some implicit conversion operators to make going between
 types fairly seamless.
+
+## Julia
+
+{% example src/main.jl %}
+
+To mirror the tuple structure definition, we create a type (note: we
+could also have used an immutable type with no other changes) with the
+same size and order of fields as the rust definition. `ccall` allows 
+custom types to be passed to and from C functions which are converted
+to struct memory layout automatically.

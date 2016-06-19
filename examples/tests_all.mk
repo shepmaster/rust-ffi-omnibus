@@ -4,3 +4,4 @@ include ${TEST_PYTHON}
 include ${TEST_HASKELL}
 include ${TEST_NODEJS}
 include ${TEST_CSHARP}
+include ${TEST_JULIA}
