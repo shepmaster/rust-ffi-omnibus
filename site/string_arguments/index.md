@@ -65,8 +65,8 @@ string.
 
 {% example src/main.py %}
 
-The ctypes library automatically converts Python strings to the
-appropriate C string.
+Python strings must be encoded as UTF-8 to be passed through the FFI
+boundary.
 
 ## Haskell
 
