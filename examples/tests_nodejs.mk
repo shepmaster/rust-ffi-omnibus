@@ -12,13 +12,9 @@ endif
 
 NODEJS_BIN_DIR ?= $(shell npm bin)
 
-.PHONY: nodejs-hint_${d}
-nodejs-hint_${d}: ${d}/src/main.js ${NODEJS_DEPENDENCIES}
-	${NODEJS_BIN_DIR}/jshint $<
-
 .PHONY: nodejs-style_${d}
-nodejs-style_${d}: ${d}/src/main.js ${NODEJS_DEPENDENCIES} .jscsrc
-	${NODEJS_BIN_DIR}/jscs $<
+nodejs-style_${d}: ${d}/src/main.js ${NODEJS_DEPENDENCIES} .eslintrc.js
+	${NODEJS_BIN_DIR}/eslint $<
 
 ${TEST_DIR_${d}}/nodejs-test: LIB_DIR := ${LIB_DIR_${d}}
 ${TEST_DIR_${d}}/nodejs-test: ${d}/src/main.js ${TEST_DIR_${d}} ${LIB_${d}} ${NODEJS_DEPENDENCIES}
@@ -29,4 +25,4 @@ nodejs-test_${d}: EXPECTED := ${d}/expected-output
 nodejs-test_${d}: ${TEST_DIR_${d}}/nodejs-test
 	diff -q ${EXPECTED} $<
 
-nodejs: nodejs-test_${d} nodejs-hint_${d} nodejs-style_${d}
+nodejs: nodejs-test_${d} nodejs-style_${d}

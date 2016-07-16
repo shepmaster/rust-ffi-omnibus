@@ -23,8 +23,8 @@ ZipCodeDatabase.prototype.populationOf = function(zip) {
   return lib.zip_code_database_population_of(this.ptr, zip);
 };
 
+var database = new ZipCodeDatabase();
 try {
-  var database = new ZipCodeDatabase();
   database.populate();
   var pop1 = database.populationOf('90210');
   var pop2 = database.populationOf('20500');

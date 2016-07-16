@@ -1,5 +1,4 @@
 var ffi = require('ffi');
-var ref = require('ref');
 var struct = require('ref-struct');
 
 var Tuple = struct({
