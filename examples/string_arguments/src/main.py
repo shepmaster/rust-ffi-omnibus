@@ -10,4 +10,4 @@ lib = ctypes.cdll.LoadLibrary(prefix + "string_arguments" + extension)
 lib.how_many_characters.argtypes = (c_char_p,)
 lib.how_many_characters.restype = c_uint32
 
-print lib.how_many_characters("göes to élevên")
+print(lib.how_many_characters("göes to élevên".encode('utf-8')))

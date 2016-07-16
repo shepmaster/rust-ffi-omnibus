@@ -8,6 +8,7 @@ addons:
     packages:
       - ghc
       - mono-devel
+      - python3
 before_install:
 - bundle install
 script:

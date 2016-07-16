@@ -32,7 +32,7 @@ All Ruby examples will use Ruby 2.2 and the [FFI gem][gem].
 
 ## Python
 
-All Python examples will use Python 2.7 and the [ctypes library][ctypes].
+All Python examples will use Python 3.5 and the [ctypes library][ctypes].
 
 ## Haskell
 
@@ -72,5 +72,5 @@ installed.
 [libc]: http://doc.rust-lang.org/libc/libc/index.html
 [dyn-stat]: http://doc.crates.io/manifest.html#building-dynamic-or-static-libraries
 [gem]: https://github.com/ffi/ffi
-[ctypes]: https://docs.python.org/2/library/ctypes.html
+[ctypes]: https://docs.python.org/3/library/ctypes.html
 [node-ffi]: https://www.npmjs.com/package/node-ffi

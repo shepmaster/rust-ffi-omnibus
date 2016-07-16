@@ -31,10 +31,10 @@ class ZipCodeDatabase:
         lib.zip_code_database_populate(self.obj)
 
     def population_of(self, zip):
-        return lib.zip_code_database_population_of(self.obj, zip)
+        return lib.zip_code_database_population_of(self.obj, zip.encode('utf-8'))
 
 with ZipCodeDatabase() as database:
     database.populate()
     pop1 = database.population_of("90210")
     pop2 = database.population_of("20500")
-    print pop1 - pop2
+    print(pop1 - pop2)

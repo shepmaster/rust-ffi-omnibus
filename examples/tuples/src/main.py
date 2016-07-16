@@ -17,4 +17,4 @@ lib.flip_things_around.restype = Tuple
 
 tup = Tuple(10, 20)
 
-print lib.flip_things_around(tup)
+print(lib.flip_things_around(tup))

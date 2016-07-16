@@ -9,4 +9,4 @@ lib = ctypes.cdll.LoadLibrary(prefix + "integers" + extension)
 lib.addition.argtypes = (c_uint32, c_uint32)
 lib.addition.restype = c_uint32
 
-print lib.addition(1, 2)
+print(lib.addition(1, 2))
