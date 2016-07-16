@@ -8,7 +8,7 @@ module Jekyll
 
     def render(context)
       @context = context
-      "<pre><code>#{excerpt}</code></pre>"
+      "<pre><code class='#{filetype}'>#{excerpt}</code></pre>"
     end
 
     def excerpt
@@ -39,6 +39,20 @@ module Jekyll
     def filebase
       @context.registers[:page].fetch('examples', './')
     end
+
+    def filetype
+      TYPE_HINTS[File.extname(@file)]
+    end
+
+    TYPE_HINTS = {
+      ".c" => "c",
+      ".cs" => "csharp",
+      ".hs" => "haskell",
+      ".js" => "javascript",
+      ".py" => "python",
+      ".rb" => "ruby",
+      ".rs" => "rust",
+    }
   end
 end
 
