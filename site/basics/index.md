@@ -32,11 +32,11 @@ All Ruby examples will use Ruby 2.3 and the [FFI gem][gem].
 
 ## Python
 
-All Python examples will use Python 3.5 and the [ctypes library][ctypes].
+All Python examples will use Python 3.2 and the [ctypes library][ctypes].
 
 ## Haskell
 
-All Haskell examples will use GHC 7.10 with the `ForeignFunctionInterface`
+All Haskell examples will use GHC 7.4 with the `ForeignFunctionInterface`
 language extension and only the `base` library which comes with GHC.
 
 ## Node.js
@@ -45,9 +45,9 @@ All Node.js examples will use Node.js 6.3 and the [ffi package][node-ffi].
 
 ## C\#
 
-All C# examples will compile with Mono 2.10 (Travis CI) and 4.2. It is
-assumed that this code will work with the Microsoft CLR frameworks,
-but this is untested.
+All C# examples will compile with Mono 4.4. It is assumed that this
+code will work with the Microsoft CLR frameworks, but this is
+untested.
 
 ## Running Examples
 
