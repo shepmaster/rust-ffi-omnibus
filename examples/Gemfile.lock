@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ffi (1.9.10)
+    ffi (1.9.14)
 
 PLATFORMS
   ruby
@@ -9,5 +9,8 @@ PLATFORMS
 DEPENDENCIES
   ffi
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.11.2
+   1.12.5
