@@ -8,6 +8,9 @@ module.exports = {
     "es6": true,
   },
   "rules": {
+    // Prefer the better-behaved ES6 variable declarations
+    "no-var": "error",
+    "prefer-const": "error",
     // The FFI library is outside of our control
     "new-cap": ["error", {
       "capIsNewExceptions": ["Library"],

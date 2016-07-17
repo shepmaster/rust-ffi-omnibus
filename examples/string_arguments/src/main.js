@@ -1,6 +1,6 @@
-var ffi = require('ffi');
+const ffi = require('ffi');
 
-var lib = ffi.Library('libstring_arguments', {
+const lib = ffi.Library('libstring_arguments', {
   how_many_characters: ['uint32', ['string']],
 });
 
