@@ -20,10 +20,8 @@ that may be passed across the FFI boundary. Ownership of the string is
 transferred to the caller, but the caller must return the string to
 Rust in order to properly deallocate the memory.
 
-# TODO - intra page links
-
-[objects]: /objects
-[string-arguments]: /string-arguments
+[objects]: ../objects
+[string-arguments]: ../string-arguments
 [into_raw]: https://doc.rust-lang.org/std/ffi/struct.CString.html#method.into_raw
 [from_raw]: https://doc.rust-lang.org/std/ffi/struct.CString.html#method.from_raw
 
