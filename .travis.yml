@@ -11,6 +11,12 @@ addons:
       - python3
 before_install:
 - bundle install
+- clang --version
+- ruby --version
+- python3 --version
+- ghc --version
+- node --version
+- mono --version
 script:
 - make -C examples
 - cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
