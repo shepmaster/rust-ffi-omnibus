@@ -1,13 +1,13 @@
-var ffi = require('ffi');
+const ffi = require('ffi');
 
-var lib = ffi.Library('libobjects', {
+const lib = ffi.Library('libobjects', {
   zip_code_database_new: ['pointer', []],
   zip_code_database_free: ['void', ['pointer']],
   zip_code_database_populate: ['void', ['pointer']],
   zip_code_database_population_of: ['uint32', ['pointer', 'string']],
 });
 
-var ZipCodeDatabase = function() {
+const ZipCodeDatabase = function() {
   this.ptr = lib.zip_code_database_new();
 };
 
@@ -23,11 +23,11 @@ ZipCodeDatabase.prototype.populationOf = function(zip) {
   return lib.zip_code_database_population_of(this.ptr, zip);
 };
 
+const database = new ZipCodeDatabase();
 try {
-  var database = new ZipCodeDatabase();
   database.populate();
-  var pop1 = database.populationOf('90210');
-  var pop2 = database.populationOf('20500');
+  const pop1 = database.populationOf('90210');
+  const pop2 = database.populationOf('20500');
   console.log(pop1 - pop2);
 } finally {
   database.free();

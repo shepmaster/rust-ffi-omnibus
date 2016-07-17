@@ -11,12 +11,15 @@ addons:
       - python3
 before_install:
 - bundle install
+- nvm install 6.3 && nvm use 6.3
 - clang --version
 - ruby --version
 - python3 --version
 - ghc --version
 - node --version
 - mono --version
+# Need newer compiler for some node modules
+- export CC=clang CXX=clang++
 script:
 - make -C examples
 - cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..

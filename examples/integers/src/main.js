@@ -1,6 +1,6 @@
-var ffi = require('ffi');
+const ffi = require('ffi');
 
-var lib = ffi.Library('libintegers', {
+const lib = ffi.Library('libintegers', {
   addition: ['uint32', ['uint32', 'uint32']],
 });
 
