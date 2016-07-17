@@ -10,6 +10,9 @@
 - title: String Arguments
   page: /string_arguments/
 
+- title: String Return Values
+  page: /string_return/
+
 - title: Slice Arguments
   page: /slice_arguments/
 
