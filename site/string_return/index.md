@@ -21,7 +21,7 @@ transferred to the caller, but the caller must return the string to
 Rust in order to properly deallocate the memory.
 
 [objects]: ../objects
-[string-arguments]: ../string-arguments
+[string-arguments]: ../string_arguments
 [into_raw]: https://doc.rust-lang.org/std/ffi/struct.CString.html#method.into_raw
 [from_raw]: https://doc.rust-lang.org/std/ffi/struct.CString.html#method.from_raw
 
