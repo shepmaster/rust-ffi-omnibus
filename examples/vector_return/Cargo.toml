@@ -1,0 +1,11 @@
+[package]
+name = "vector_return"
+version = "0.1.0"
+authors = ["William Orr <will@worrbase.com>"]
+
+[dependencies]
+libc = "*"
+
+[lib]
+name = "vector_return"
+crate-type = ["cdylib"]
