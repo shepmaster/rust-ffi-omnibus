@@ -1,4 +1,5 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 import sys, ctypes
 from ctypes import POINTER, c_uint32, c_size_t
 
