@@ -1,5 +1,6 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # coding: utf-8
+
 import sys, ctypes
 from ctypes import c_uint32, c_char_p
 

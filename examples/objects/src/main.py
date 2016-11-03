@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys, ctypes
 from ctypes import c_char_p, c_uint32, Structure, POINTER
 
