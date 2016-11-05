@@ -7,5 +7,4 @@ pub extern fn addition(a: uint32_t, b: uint32_t) -> uint32_t {
 }
 
 #[allow(dead_code)]
-#[cfg(windows)]
-fn fix_windows_linking() { panic!() }
+pub extern fn fix_linking_when_not_using_stdlib() { panic!() }

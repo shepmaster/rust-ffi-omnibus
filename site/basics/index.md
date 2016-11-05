@@ -18,9 +18,23 @@ example has the following boilerplate in `Cargo.toml`:
 
 {% example Cargo.toml %}
 
-`crate-type = ["dylib"]` creates a dynamically linked library.
+`crate-type = ["cdylib"]` creates a dynamically linked library.
 Check out the Cargo documentation for
 [dynamic or static libraries][dyn-stat] for more information.
+
+`cdylib` was [introduced in RFC 1510][rfc1510] and improves on the
+existing `dylib` with reduced file size and fewer exported symbols. It
+was [implemented in Rust 1.10][rust-1.10]; if you are using earlier
+versions, it is encouraged that you upgrade, but you can also use
+`dylib` with minimal ill effects.
+
+Some examples are so minimal that they don't use any features from the
+Rust standard library. This triggers a [known issue][rust-18807] and
+linking will fail. The only workaround is to include an exported but
+unused function that does use something from the standard
+library. These functions are called
+`fix_linking_when_not_using_stdlib` and can be safely removed for any
+larger project.
 
 ## C
 
@@ -71,6 +85,9 @@ installed.
 [Cargo]: https://crates.io/
 [libc]: http://doc.rust-lang.org/libc/libc/index.html
 [dyn-stat]: http://doc.crates.io/manifest.html#building-dynamic-or-static-libraries
+[rfc1510]: https://github.com/rust-lang/rfcs/blob/master/text/1510-cdylib.md
+[rust-1.10]: https://blog.rust-lang.org/2016/07/07/Rust-1.10.html
+[rust-18807]: https://github.com/rust-lang/rust/issues/18807
 [gem]: https://github.com/ffi/ffi
 [ctypes]: https://docs.python.org/3/library/ctypes.html
 [node-ffi]: https://www.npmjs.com/package/node-ffi

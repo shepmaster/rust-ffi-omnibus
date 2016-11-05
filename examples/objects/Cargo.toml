@@ -8,4 +8,4 @@ libc = "*"
 
 [lib]
 name = "objects"
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
