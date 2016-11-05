@@ -8,6 +8,6 @@ authors = ["Jake Goulding <jake.goulding@gmail.com>"]
 libc = "*"
 
 [lib]
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
 # [excerpt]
 name = "integers"

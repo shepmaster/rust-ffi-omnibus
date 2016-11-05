@@ -8,4 +8,4 @@ libc = "*"
 
 [lib]
 name = "string_return"
-crate-type = ["dylib"]
+crate-type = ["cdylib"]

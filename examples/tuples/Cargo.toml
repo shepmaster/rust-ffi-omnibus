@@ -8,4 +8,4 @@ libc = "*"
 
 [lib]
 name = "tuples"
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
