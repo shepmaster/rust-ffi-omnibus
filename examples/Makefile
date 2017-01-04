@@ -62,6 +62,8 @@ dir := objects
 include ${dir}/rules.mk
 dir := string_return
 include ${dir}/rules.mk
+dir := vector_return
+include ${dir}/rules.mk
 
 all: c ruby python haskell nodejs csharp
 .PHONY: all
