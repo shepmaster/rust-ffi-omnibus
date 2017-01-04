@@ -33,6 +33,8 @@ ifeq (${OS},Darwin)
 shared_lib = lib${1}.dylib
 else ifeq (${OS},Linux)
 shared_lib = lib${1}.so
+else ifeq (${OS},OpenBSD)
+shared_lib = lib${1}.so
 else
 $(error Unknown platform, please define how shared libraries are named)
 endif
