@@ -42,7 +42,7 @@ All C examples will be compiled using the C11 standard.
 
 ## Ruby
 
-All Ruby examples will use Ruby 2.3 and the [FFI gem][gem].
+All Ruby examples will use Ruby 2.4 and the [FFI gem][gem].
 
 ## Python
 

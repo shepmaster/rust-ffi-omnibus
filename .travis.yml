@@ -10,7 +10,7 @@ addons:
       - mono-devel
       - python3
 before_install:
-- rvm install 2.3.1 && rvm use 2.3.1
+- rvm install 2.4.1 && rvm use 2.4.1
 - nvm install 6.3 && nvm use 6.3
 - bundle install
 - clang --version
