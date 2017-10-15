@@ -17,9 +17,9 @@ function counterGenerate(desiredSize) {
   counter.length = size;
 
   try {
-    let str = "";
+    let str = '';
     for (let i = 0; i < counter.length; i++) {
-      str += counter[i] + "..";
+      str += counter[i] + '..';
     }
     return str;
   } finally {
