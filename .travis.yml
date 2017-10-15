@@ -20,7 +20,10 @@ before_install:
 script:
 - make -C examples
 - cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
-after_success: "./deploy_gh_pages.sh"
-env:
-  global:
-    secure: tQbG88b4WOHHQ1VK58Ah4I/XYEW0AiFcmcnVvARizSLlJk6bVx0S9neNvEi9PxTihSfidsC6TGK+gGRpsPuIJjKXs7koKMLtS0DoHjhpU72RX+QXIgvu2Yr01ZsMqpGOPhdnN4raWqDQXUqRLTJ/7xMgA81O+rkeYzZlKF21Z536IoEHT65PkxJdBh9kEP7VsAcXwBO4lGfJxLm2sBJaRf07OvlwxBNF5kSr4T0y+oYRes658cxAhiRXl316WBlFSNm4g4lSB9bewlXDYEL1Z+r0abhJIyQxN+2xvrDW9zdjGXBRX8pjTfALTHpx3hmlk24EoLQaiPQyNC3p1bvNnpglLSgy2WEFtrzQR05okyNoNn0BaemZHvCKjWsi4btYjmOKXzSZ8OMqyHAl1WNxwv5NLixJI38h8N+M1sqRX64WwZZx0gCWAKjMkh3Kaa4CNMvkP4M+4y2IalxnwAaDtZbQLkthAP4xr+rnsXOEwPcxKUBMdUuMuIYdH5QjC2kj3jOMTq2UjcpvrOA+2JSAvsYDOlj0fUrjA2YaHb35yacyNnGA/FjQ79PRtkR0FGzYISTuRJBX6CIVu99WF0yjFh3iKZOTxngbkrRqdf+DuCu/IBmSoGfHmDCfSKOxCovdpJD9kvuWpBf92nlnY+B4UZXeDneOO6Jg+05eB312NXo=
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: built-site
+  on:
+    branch: master
