@@ -11,7 +11,7 @@ addons:
       - python3
 before_install:
 - rvm install 2.4.1 && rvm use 2.4.1
-- nvm install 6.3 && nvm use 6.3
+- nvm install 8.7 && nvm use 8.7
 - bundle install
 - clang --version
 - ruby --version

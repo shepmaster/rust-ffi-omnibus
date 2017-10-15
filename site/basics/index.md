@@ -55,7 +55,7 @@ language extension and only the `base` library which comes with GHC.
 
 ## Node.js
 
-All Node.js examples will use Node.js 6.3 and the [ffi package][node-ffi].
+All Node.js examples will use Node.js 8.7 and the [ffi package][node-ffi].
 
 ## C\#
 
