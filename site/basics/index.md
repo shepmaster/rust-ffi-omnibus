@@ -46,11 +46,11 @@ All Ruby examples will use Ruby 2.4 and the [FFI gem][gem].
 
 ## Python
 
-All Python examples will use Python 3.2 and the [ctypes library][ctypes].
+All Python examples will use Python 3.4 and the [ctypes library][ctypes].
 
 ## Haskell
 
-All Haskell examples will use GHC 7.4 with the `ForeignFunctionInterface`
+All Haskell examples will use GHC 7.6 with the `ForeignFunctionInterface`
 language extension and only the `base` library which comes with GHC.
 
 ## Node.js
