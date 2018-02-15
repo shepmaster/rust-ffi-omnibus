@@ -83,11 +83,11 @@ We create an empty structure to represent our type. This will only be
 used in conjunction with the `POINTER` method, which creates a new
 type as a pointer to an existing one.
 
-To ensure that memory is properly cleaned up, we use a *context
-manager*. This is tied to our class through the `__enter__` and
-`__exit__` methods. We use the `with` statement to start a new
-context. When the context is over, the `__exit__` method will be
-automatically called, preventing the memory leak.
+To ensure that memory is properly cleaned up, we define a `__del__`
+method on our class for the Python garbage collector to call when it
+detects that there are no longer any references to our instance of the
+`ZipCodeDatabase` class, which prevents a memory leak.
+
 
 ## Haskell
 
