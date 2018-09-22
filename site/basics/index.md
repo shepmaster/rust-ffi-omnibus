@@ -68,7 +68,7 @@ untested.
 When running examples, you need to ensure the Rust dynamic library
 can be located by the system.
 
-With most shells on Mac OS X and Linux, this can be done by prefixing
+With most shells on macOS and Linux, this can be done by prefixing
 commands with `LD_LIBRARY_PATH=target/debug`.  For example, to run a
 Python example, you might use
 `LD_LIBRARY_PATH=target/debug python src/main.py` from the example
