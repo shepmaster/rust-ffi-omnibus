@@ -50,7 +50,7 @@ All Python examples will use Python 3.7 and the [ctypes library][ctypes].
 
 ## Haskell
 
-All Haskell examples will use GHC 7.6 with the `ForeignFunctionInterface`
+All Haskell examples will use GHC 8.4 with the `ForeignFunctionInterface`
 language extension and only the `base` library which comes with GHC.
 
 ## Node.js
