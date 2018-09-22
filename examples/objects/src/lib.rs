@@ -1,7 +1,6 @@
 extern crate libc;
 
 use libc::{c_char, uint32_t};
-use std::str;
 use std::collections::HashMap;
 use std::ffi::CStr;
 
