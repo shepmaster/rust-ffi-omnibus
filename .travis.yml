@@ -1,7 +1,7 @@
 language: rust
 sudo: true
 before_install:
-- rvm install 2.4.1 && rvm use 2.4.1
+- rvm install 2.5.1 && rvm use 2.5.1
 - nvm install 8.7 && nvm use 8.7
 - |
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
