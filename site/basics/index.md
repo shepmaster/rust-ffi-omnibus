@@ -46,7 +46,7 @@ All Ruby examples will use Ruby 2.5 and the [FFI gem][gem].
 
 ## Python
 
-All Python examples will use Python 3.4 and the [ctypes library][ctypes].
+All Python examples will use Python 3.7 and the [ctypes library][ctypes].
 
 ## Haskell
 
