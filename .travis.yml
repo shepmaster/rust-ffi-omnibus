@@ -1,25 +1,31 @@
-language: rust
-sudo: true
-before_install:
-- rvm install 2.4.1 && rvm use 2.4.1
-- nvm install 8.7 && nvm use 8.7
-- |
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-  echo "deb http://download.mono-project.com/repo/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/mono-official.list
-  sudo apt-get update
-- sudo apt-get install ghc='7.6.*' mono-devel='5.10.*' python3='3.4.*'
-- bundle install
-- clang --version
-- ruby --version
-- python3 --version
-- ghc --version
-- node --version
-- mono --version
-# Need newer compiler for some node modules
-- export CC=clang CXX=clang++
+language: minimal
+sudo: required
+services:
+  - docker
 script:
-- make -C examples
-- cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
+  - docker pull shepmaster/omnibus || true
+  - docker build . -t shepmaster/omnibus --cache-from shepmaster/omnibus
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push shepmaster/omnibus
+  - >
+    docker run
+    -it
+    --rm
+    -v $PWD/cargo:/root/.cargo/registry
+    shepmaster/omnibus
+    make -C /omnibus/examples
+  - >
+    docker run
+    -it
+    --rm
+    -v $PWD/built-site:/built-site
+    shepmaster/omnibus
+    bash -c 'cd /omnibus/site && bundle && jekyll build --destination /built-site --config _config.yml,_config.prod.yml'
+#- make -C /omnibus/examples
+#- cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
+cache:
+  directories:
+    - $HOME/cargo
 deploy:
   provider: pages
   skip_cleanup: true

@@ -42,24 +42,24 @@ All C examples will be compiled using the C11 standard.
 
 ## Ruby
 
-All Ruby examples will use Ruby 2.4 and the [FFI gem][gem].
+All Ruby examples will use Ruby 2.5 and the [FFI gem][gem].
 
 ## Python
 
-All Python examples will use Python 3.4 and the [ctypes library][ctypes].
+All Python examples will use Python 3.7 and the [ctypes library][ctypes].
 
 ## Haskell
 
-All Haskell examples will use GHC 7.6 with the `ForeignFunctionInterface`
+All Haskell examples will use GHC 8.4 with the `ForeignFunctionInterface`
 language extension and only the `base` library which comes with GHC.
 
 ## Node.js
 
-All Node.js examples will use Node.js 8.7 and the [ffi package][node-ffi].
+All Node.js examples will use Node.js 8.12 and the [ffi package][node-ffi].
 
 ## C\#
 
-All C# examples will compile with Mono 5.10. It is assumed that this
+All C# examples will compile with Mono 5.14. It is assumed that this
 code will work with the Microsoft CLR frameworks, but this is
 untested.
 
@@ -68,7 +68,7 @@ untested.
 When running examples, you need to ensure the Rust dynamic library
 can be located by the system.
 
-With most shells on Mac OS X and Linux, this can be done by prefixing
+With most shells on macOS and Linux, this can be done by prefixing
 commands with `LD_LIBRARY_PATH=target/debug`.  For example, to run a
 Python example, you might use
 `LD_LIBRARY_PATH=target/debug python src/main.py` from the example

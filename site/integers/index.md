@@ -30,7 +30,7 @@ and return types. This can then be compiled and linked against the
 Rust library using `gcc --std=c11 -o c-example src/main.c -L
 target/debug/ -lintegers`.
 
-As noted in the basics section, this can be run on Mac OS X and Linux
+As noted in the basics section, this can be run on macOS and Linux
 with `LD_LIBRARY_PATH=target/debug/ ./c-example`, and on Windows by
 copying `target\debug\integers.dll` to the current directory and
 running `.\c-example`.
@@ -46,7 +46,7 @@ This can be run with `LD_LIBRARY_PATH=target/debug/ ruby
 
 {% example src/main.py %}
 
-As noted in the basics section, this can be run on Mac OS X and Linux
+As noted in the basics section, this can be run on macOS and Linux
 with `LD_LIBRARY_PATH=target/debug/ python src/main.py`, and on
 Windows by copying `target\debug\integers.dll` to the current
 directory and running `py src\main.py`.
