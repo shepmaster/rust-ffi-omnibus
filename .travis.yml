@@ -1,5 +1,8 @@
 language: minimal
 sudo: required
+branches:
+  only:
+  - master
 services:
   - docker
 script:
@@ -21,8 +24,6 @@ script:
     -v $PWD/built-site:/built-site
     shepmaster/omnibus
     bash -c 'cd /omnibus/site && bundle && jekyll build --destination /built-site --config _config.yml,_config.prod.yml'
-#- make -C /omnibus/examples
-#- cd site && jekyll build --destination ../built-site --config _config.yml,_config.prod.yml; cd ..
 cache:
   directories:
     - $HOME/cargo
