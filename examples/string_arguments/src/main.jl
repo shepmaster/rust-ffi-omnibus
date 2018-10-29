@@ -1,6 +1,5 @@
 #!/usr/bin/env julia
 using Libdl
-using Printf
 
 libname = "string_arguments"
 if !Sys.iswindows()
@@ -15,4 +14,4 @@ howmanycharacters(s:: AbstractString) = ccall(
     UInt32, (Cstring,),
     s)
 
-@printf("%d\n", howmanycharacters("göes to élevên"))
+println(howmanycharacters("göes to élevên"))

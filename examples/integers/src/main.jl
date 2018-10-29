@@ -1,6 +1,5 @@
 #!/usr/bin/env julia
 using Libdl
-using Printf
 
 libname = "integers"
 if !Sys.iswindows()
@@ -15,4 +14,4 @@ addition(a, b) = ccall(
     UInt32, (UInt32, UInt32), 
     a, b)
 
-@printf("%d\n", addition(1, 2))
+println(addition(1, 2))
