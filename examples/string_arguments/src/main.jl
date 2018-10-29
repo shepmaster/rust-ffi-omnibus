@@ -10,7 +10,7 @@ end
 libstring_arguments = Libdl.dlopen(libname)
 howmanycharacters_sym = Libdl.dlsym(libstring_arguments, :how_many_characters)
 
-howmanycharacters(s) = ccall(
+howmanycharacters(s:: AbstractString) = ccall(
     howmanycharacters_sym,
     UInt32, (Cstring,),
     s)

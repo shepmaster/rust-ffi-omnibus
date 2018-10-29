@@ -94,7 +94,7 @@ Native strings are automatically marshalled to C-compatible strings.
 
 {% example src/main.jl %}
 
-Julia strings are automatically converted. The `Cstring` type from
-Julia is compatible with the Rust `CStr`, as it also assumes a 
-`NUL` terminator byte and does not allow null bytes embedded in
-the string.
+Julia strings (of base type `AbstractString`) are automatically
+converted to C strings. The `Cstring` type from Julia is compatible
+with the Rust type `CStr`, as it also assumes a `NUL` terminator byte
+and does not allow `NUL` bytes embedded in the string.
