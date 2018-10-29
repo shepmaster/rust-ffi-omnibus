@@ -89,3 +89,12 @@ appropriate C strings.
 {% example src/main.cs %}
 
 Native strings are automatically marshalled to C-compatible strings.
+
+## Julia
+
+{% example src/main.jl %}
+
+Julia strings are automatically converted. The `Cstring` type from
+Julia is compatible with the Rust `CStr`, as it also assumes a 
+`NUL` terminator byte and does not allow null bytes embedded in
+the string.
