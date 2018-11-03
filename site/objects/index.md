@@ -147,3 +147,22 @@ We also allow the `ZipCodeDatabase` to participate in the
 `IDisposable` protocol, forwarding to the safe wrapper.
 
 [SafeHandle]: https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.safehandle(v=vs.110).aspx
+
+## Julia
+
+{% example src/main.jl %}
+
+As in other languages, we hide a handler pointer behind a new data type. The method which populates the database is called `populate!` to follow the Julia convention of having the `!` suffix on methods which modify the value.
+
+There is currently no consensus on how Julia should handle native 
+resources. While the inner constructor pattern for allocating the 
+`ZipCodeDatabase` is suitable here, we can think of many ways to let
+Julia free it afterwards. In this example, we show two means of freeing 
+the object: (1) a mapping constructor for use with the `do` syntax, and
+(2) a `close` overload for manually freeing the object.
+
+The inner constructor `ZipCodeDatabase(f)`, is both in charge of
+creating and freeing the object. With the `do` syntax, the user code
+becomes similar to one using Python's `with` syntax. Alternatively,
+the programmer can use the other constructor and call the method
+`close` when it is no longer needed.
