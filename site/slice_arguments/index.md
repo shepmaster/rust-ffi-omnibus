@@ -88,3 +88,31 @@ private one and provides the expected interface.
 
 The C code uses a `size_t`, a type whose size changes depending on
 the platform. To mirror that, we use a `UIntPtr`.
+
+## Julia
+
+{% example src/main.jl %}
+
+Passing an array requires both a pointer and the length of the array.
+The array is implicitly converted to a pointer to the first element,
+of type `Ptr{UInt32}`. The type `Csize` is the Julia equivalent of
+`size_t`. We also enforce the function argument type to
+`Array{UInt32}`, which is the specific array type for which the native
+function is effectively compatible with.
+
+This example gets a bit more complicated because there are two
+primitive pointer types in Julia. [`Ptr{T}`](julia-Ptr) is a plain
+memory address to a value of type `T`, whereas [`Ref{T}`](julia-Ref)
+is a managed pointer to data that the Julia garbage collector will not
+free for as long as this `Ref` is referenced. These types will be
+converted to a C compatible pointer type in `ccall` in either case.
+
+While [it is preferred][julia-refptr] to use `Ref` when passing
+arguments by pointer to native functions, and even more so when
+passing them via mutable pointers (so that the native function may
+modify the pointed object), C-style arrays are an exception
+to the rule, and should be passed with a plain `Ptr` and length.
+
+[julia-Ptr]: https://docs.julialang.org/en/v1/base/c/#Core.Ptr
+[julia-Ref]: https://docs.julialang.org/en/v1/base/c/#Core.Ref
+[julia-refptr]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code/#When-to-use-T,-Ptr{T}-and-Ref{T}-1
