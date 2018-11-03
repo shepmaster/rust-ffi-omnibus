@@ -82,4 +82,4 @@ nodejs:
 csharp:
 julia:
 
-.PHONY: c ruby python haskell nodejs csharp
+.PHONY: c ruby python haskell nodejs csharp julia
