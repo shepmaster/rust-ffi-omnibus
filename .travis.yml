@@ -8,8 +8,11 @@ services:
 script:
   - docker pull shepmaster/omnibus || true
   - docker build . -t shepmaster/omnibus --cache-from shepmaster/omnibus
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push shepmaster/omnibus
+  - >
+    if [[ -n "$DOCKER_PASSWORD" ]]; then
+      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      docker push shepmaster/omnibus
+    fi
   - >
     docker run
     -it
