@@ -19,7 +19,7 @@ script:
     --rm
     -v $PWD/cargo:/root/.cargo/registry
     shepmaster/omnibus
-    make -C /omnibus/examples
+    make -C /omnibus/examples julia
   - >
     docker run
     -it
