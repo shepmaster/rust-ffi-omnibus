@@ -24,5 +24,5 @@ int main(void) {
 
   zip_code_database_free(database);
 
-  printf("%d\n", pop1 - pop2);
+  printf("%d\n", (int32_t)pop1 - (int32_t)pop2);
 }
