@@ -22,7 +22,6 @@ RUN \
         --output julia-1.0.1-linux-x86_64.tar.gz \
         && file julia-1.0.1-linux-x86_64.tar.gz \
         && ls -l julia-1.0.1-linux-x86_64.tar.gz \
-        && cat julia-1.0.1-linux-x86_64.tar.gz \
         \
         && echo '9ffbcf7f4a111e13415954caccdd1ce90b5c835cee9f62d6ac708f5b752c87dd  julia-1.0.1-linux-x86_64.tar.gz' > .sha256 \
         && sha256sum -c .sha256 \
