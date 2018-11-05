@@ -17,7 +17,6 @@ RUN \
 
 RUN \
         curl \
-        -vvvvvvv \
         -L \
         https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.1-linux-x86_64.tar.gz \
         --output julia-1.0.1-linux-x86_64.tar.gz \
