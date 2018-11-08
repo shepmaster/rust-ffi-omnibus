@@ -15,7 +15,17 @@ Both this site and all the examples are kept in a
 each example for complete, working code. Requests, suggestions, or
 corrections can be [filed using Github Issues][issues].
 
+Translations
+
+The Omnibus is translated into different languages by volunteers,
+thanks!
+
+- [Chinese 🇨🇳][chinese] by [@chinanf-boy][chinese-repo]
+
 [Rust]: http://www.rust-lang.org/
 [so]: http://stackoverflow.com/questions/tagged/rust
 [repo]: https://github.com/shepmaster/rust-ffi-omnibus
 [issues]: https://github.com/shepmaster/rust-ffi-omnibus/issues
+
+[chinese]: http://llever.com/rust-ffi-omnibus/
+[chinese-repo]: https://github.com/chinanf-boy/rust-ffi-omnibus
