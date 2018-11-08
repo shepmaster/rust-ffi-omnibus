@@ -91,3 +91,27 @@ for the exposed function.
 
 This can be compiled with `mcs -out:csharp-example src/main.cs` and
 executed with `LD_LIBRARY_PATH=target/debug mono csharp-example`.
+
+## Julia
+
+{% example src/main.jl %}
+
+Foreign function calls are made with the [`ccall`][ccall]
+primitive. If the library's name is known in advance, we can also
+skip fetching the function pointer through `dlsym`, by passing a
+`(func, lib)` literal tuple:
+
+```julia
+addition(a, b) = ccall(
+    (:addition, "libintegers"), # ← must be a constant expression!
+    UInt32,
+    (UInt32, UInt32), 
+    a, b)
+```
+
+As noted in the basics section, this can be run on macOS and Linux
+with `LD_LIBRARY_PATH=target/debug/ julia src/main.jl`, and on
+Windows by copying `target\debug\integers.dll` to the current
+directory and running `julia src\main.jl`.
+
+[ccall]: https://docs.julialang.org/en/v1/base/c/#ccall

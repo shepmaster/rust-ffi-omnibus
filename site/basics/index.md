@@ -63,6 +63,12 @@ All C# examples will compile with Mono 5.14. It is assumed that this
 code will work with the Microsoft CLR frameworks, but this is
 untested.
 
+## Julia
+
+All Julia examples will use Julia 1.0, and rely on the language's
+built-in [C function calling capabilities][julia-c]. They might also
+work on v0.7, but this version is untested.
+
 ## Running Examples
 
 When running examples, you need to ensure the Rust dynamic library
@@ -91,3 +97,4 @@ installed.
 [gem]: https://github.com/ffi/ffi
 [ctypes]: https://docs.python.org/3/library/ctypes.html
 [node-ffi]: https://www.npmjs.com/package/node-ffi
+[julia-c]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code

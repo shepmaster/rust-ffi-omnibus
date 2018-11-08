@@ -70,3 +70,14 @@ To mirror the tuple structure definition, we create a `struct` using
 the `StructLayout` property and define the layout as sequential. We
 also provide some implicit conversion operators to make going between
 types fairly seamless.
+
+## Julia
+
+{% example src/main.jl %}
+
+Julia struct types defined with the exact same field layout are
+already compatible with C's data arrangement. Since all fields are [`isbits`][julia-isbits], then so is the `Tuple` type. As such, it
+will store each member inline and will be passed to the native
+function by value.
+
+[julia-isbits]: https://docs.julialang.org/en/v1/base/base/#Base.isbits

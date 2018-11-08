@@ -83,3 +83,16 @@ Unfortunately, there is no easy way to read the pointer as a UTF-8
 string. C\# has cases for ANSI strings and for "Unicode" strings
 (really UCS-2), but nothing for UTF-8. We need to write that
 ourselves.
+
+## Julia
+
+{% example src/main.jl %}
+
+We use the `Cstring` data type to represent a NUL-terminated string.
+Rather than holding the allocated string in Julia space, this example
+constructs a copy of the string with `unsafe_string`, to be managed
+by Julia, and transfers the Rust string back afterwards. The 
+[objects][julia-objects] section provides an example where the
+resource is kept alive in Julia.
+
+[julia-objects]: ../objects#julia
