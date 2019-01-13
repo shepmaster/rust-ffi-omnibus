@@ -59,7 +59,7 @@ All Node.js examples will use Node.js 8.12 and the [ffi package][node-ffi].
 
 ## C\#
 
-All C# examples will compile with Mono 5.14. It is assumed that this
+All C# examples will compile with Mono 5.18. It is assumed that this
 code will work with the Microsoft CLR frameworks, but this is
 untested.
 
