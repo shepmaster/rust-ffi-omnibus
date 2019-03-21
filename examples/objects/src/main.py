@@ -28,7 +28,9 @@ class ZipCodeDatabase:
         self.obj = lib.zip_code_database_new()
 
     def __del__(self):
-        lib.zip_code_database_free(self.obj)
+        if self.obj is not None:
+            lib.zip_code_database_free(self.obj)
+        self.obj = None
 
     def populate(self):
         lib.zip_code_database_populate(self.obj)
