@@ -19,12 +19,16 @@ internal class ZipCodeDatabaseHandle : SafeHandle
 
     public override bool IsInvalid
     {
-        get { return false; }
+        get { return this.handle == IntPtr.Zero; }
     }
 
     protected override bool ReleaseHandle()
     {
-        Native.zip_code_database_free(handle);
+        if (!this.IsInvalid)
+        {
+            Native.zip_code_database_free(handle);
+        }
+
         return true;
     }
 }
