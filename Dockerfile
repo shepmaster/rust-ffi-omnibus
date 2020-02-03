@@ -20,7 +20,7 @@ RUN \
         && apt-get update \
         \
         && apt-get install -y \
-        ghc-8.4.3 \
+        ghc-8.8.1 \
         mono-devel='6.8.*' \
         nodejs='8.10.*' \
         npm \
