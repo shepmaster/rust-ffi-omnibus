@@ -1,4 +1,4 @@
-const ffi = require('ffi');
+const ffi = require('ffi-napi');
 
 const lib = ffi.Library('libobjects', {
   zip_code_database_new: ['pointer', []],

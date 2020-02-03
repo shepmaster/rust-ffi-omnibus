@@ -1,6 +1,6 @@
-const ffi = require('ffi');
-const ref = require('ref');
-const array = require('ref-array');
+const ffi = require('ffi-napi');
+const ref = require('ref-napi');
+const array = require('ref-array-di')(ref);
 
 const U32array = array(ref.types.uint32);
 

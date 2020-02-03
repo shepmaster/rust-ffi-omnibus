@@ -1,4 +1,4 @@
-const ffi = require('ffi');
+const ffi = require('ffi-napi');
 
 const lib = ffi.Library('libstring_return', {
   theme_song_generate: ['char *', ['uint8']],

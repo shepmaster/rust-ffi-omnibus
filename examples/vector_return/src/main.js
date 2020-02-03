@@ -1,6 +1,6 @@
-const ffi = require('ffi');
-const ref = require('ref');
-const arrayType = require('ref-array');
+const ffi = require('ffi-napi');
+const ref = require('ref-napi');
+const arrayType = require('ref-array-di')(ref);
 
 const numberArray = arrayType('int16');
 const numberArrayPtr = ref.refType(numberArray);

@@ -57,10 +57,10 @@ arbitrary structs. Pointer indirection is always required.
 
 {% example src/main.js %}
 
-The [`ref-struct`][ref-struct] package allows us to build struct types
+The [`ref-struct-di`][ref-struct] package allows us to build struct types
 which can be passed to FFI functions.
 
-[ref-struct]: https://www.npmjs.com/package/ref-struct
+[ref-struct]: https://www.npmjs.com/package/ref-struct-di
 
 ## C\#
 

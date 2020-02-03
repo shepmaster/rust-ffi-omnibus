@@ -1,5 +1,6 @@
-const ffi = require('ffi');
-const struct = require('ref-struct');
+const ffi = require('ffi-napi');
+const ref = require('ref-napi');
+const struct = require('ref-struct-di')(ref);
 
 const Tuple = struct({
   x: 'uint32',

@@ -55,7 +55,8 @@ language extension and only the `base` library which comes with GHC.
 
 ## Node.js
 
-All Node.js examples will use Node.js 8.12 and the [ffi package][node-ffi].
+All Node.js examples will use Node.js 12.14 and the [ffi-napi
+package][node-ffi].
 
 ## C\#
 
@@ -96,5 +97,5 @@ installed.
 [rust-18807]: https://github.com/rust-lang/rust/issues/18807
 [gem]: https://github.com/ffi/ffi
 [ctypes]: https://docs.python.org/3/library/ctypes.html
-[node-ffi]: https://www.npmjs.com/package/node-ffi
+[node-ffi]: https://www.npmjs.com/package/ffi-napi
 [julia-c]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code
