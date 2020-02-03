@@ -21,7 +21,7 @@ RUN \
         \
         && apt-get install -y \
         ghc-8.4.3 \
-        mono-devel='5.18.*' \
+        mono-devel='6.8.*' \
         nodejs='8.10.*' \
         npm \
         python3.7 \
