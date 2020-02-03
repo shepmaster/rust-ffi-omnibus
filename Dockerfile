@@ -23,7 +23,7 @@ RUN \
         ghc-8.8.1 \
         mono-devel='6.8.*' \
         nodejs='12.14.*' \
-        python3.7 \
+        python3.8 \
         ruby2.6 \
         ruby2.6-dev \
         \
@@ -52,7 +52,7 @@ RUN gem install bundler
 
 RUN \
         update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1 \
-        && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
+        && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
 
 # Rust
 
