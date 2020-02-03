@@ -1,6 +1,6 @@
 extern crate libc;
 
-use libc::{c_char, uint32_t};
+use libc::c_char;
 use std::collections::HashMap;
 use std::ffi::CStr;
 
@@ -48,7 +48,7 @@ pub extern fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: *const c_char) -> uint32_t {
+pub extern fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: *const c_char) -> u32 {
     let database = unsafe {
         assert!(!ptr.is_null());
         &*ptr

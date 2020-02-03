@@ -1,6 +1,3 @@
-extern crate libc;
-
-use libc::uint32_t;
 use std::convert::From;
 
 // A Rust function that accepts a tuple
@@ -12,8 +9,8 @@ fn flip_things_around_rust(tup: (u32, u32)) -> (u32, u32) {
 // A struct that can be passed between C and Rust
 #[repr(C)]
 pub struct Tuple {
-    x: uint32_t,
-    y: uint32_t,
+    x: u32,
+    y: u32,
 }
 
 // Conversion functions

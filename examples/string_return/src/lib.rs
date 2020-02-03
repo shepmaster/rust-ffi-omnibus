@@ -1,11 +1,11 @@
 extern crate libc;
 
-use libc::{c_char, uint8_t};
+use libc::c_char;
 use std::ffi::CString;
 use std::iter;
 
 #[no_mangle]
-pub extern fn theme_song_generate(length: uint8_t) -> *mut c_char {
+pub extern fn theme_song_generate(length: u8) -> *mut c_char {
     let mut song = String::from("💣 ");
     song.extend(iter::repeat("na ").take(length as usize));
     song.push_str("Batman! 💣");
