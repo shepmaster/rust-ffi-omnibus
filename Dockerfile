@@ -25,8 +25,8 @@ RUN \
         nodejs='8.10.*' \
         npm \
         python3.7 \
-        ruby2.5 \
-        ruby2.5-dev \
+        ruby2.6 \
+        ruby2.6-dev \
         \
         && rm -rf /var/lib/apt/lists/*
 
