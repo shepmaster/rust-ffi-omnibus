@@ -4,7 +4,7 @@ use libc::c_char;
 use std::ffi::CStr;
 
 #[no_mangle]
-pub extern fn how_many_characters(s: *const c_char) -> u32 {
+pub extern "C" fn how_many_characters(s: *const c_char) -> u32 {
     let c_str = unsafe {
         assert!(!s.is_null());
 

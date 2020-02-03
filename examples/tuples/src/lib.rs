@@ -3,7 +3,7 @@ use std::convert::From;
 // A Rust function that accepts a tuple
 fn flip_things_around_rust(tup: (u32, u32)) -> (u32, u32) {
     let (a, b) = tup;
-    (b+1, a-1)
+    (b + 1, a - 1)
 }
 
 // A struct that can be passed between C and Rust
@@ -28,9 +28,11 @@ impl From<Tuple> for (u32, u32) {
 
 // The exported C method
 #[no_mangle]
-pub extern fn flip_things_around(tup: Tuple) -> Tuple {
+pub extern "C" fn flip_things_around(tup: Tuple) -> Tuple {
     flip_things_around_rust(tup.into()).into()
 }
 
 #[allow(dead_code)]
-pub extern fn fix_linking_when_not_using_stdlib() { panic!() }
+pub extern "C" fn fix_linking_when_not_using_stdlib() {
+    panic!()
+}
