@@ -66,9 +66,8 @@ untested.
 
 ## Julia
 
-All Julia examples will use Julia 1.0, and rely on the language's
-built-in [C function calling capabilities][julia-c]. They might also
-work on v0.7, but this version is untested.
+All Julia examples will use Julia 1.3, and rely on the language's
+built-in [C function calling capabilities][julia-c].
 
 ## Running Examples
 
