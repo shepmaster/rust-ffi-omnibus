@@ -22,7 +22,7 @@ never be `NULL`.
 length into a slice. This is an unsafe operation because we may be
 dereferencing invalid memory.
 
-[from_raw_parts]: http://doc.rust-lang.org/std/slice/fn.from_raw_parts.html
+[from_raw_parts]: https://doc.rust-lang.org/std/slice/fn.from_raw_parts.html
 
 ## C
 

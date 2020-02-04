@@ -18,7 +18,7 @@ fields of the struct as a C compiler would. The two conversion
 implementations use [`std::convert::From`][From] to provide ergonomic
 conversion between the struct and a corresponding tuple.
 
-[From]: http://doc.rust-lang.org/std/convert/trait.From.html
+[From]: https://doc.rust-lang.org/std/convert/trait.From.html
 
 ## C
 

@@ -36,8 +36,7 @@ preconditions fail. Each use case must evaluate what are appropriate
 failure modes, but failing loudly and early is a good initial
 position.
 
-[CStr]: http://doc.rust-lang.org/std/ffi/struct.CStr.html
-[to_str]: https://doc.rust-lang.org/nightly/std/ffi/struct.CStr.html#method.to_str
+[CStr]: https://doc.rust-lang.org/std/ffi/struct.CStr.html
 
 ## Ownership and lifetimes
 

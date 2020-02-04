@@ -85,7 +85,7 @@ installed.
 
 [official]: https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
 [Cargo]: https://crates.io/
-[libc]: http://doc.rust-lang.org/libc/libc/index.html
+[libc]: https://docs.rs/libc/*/libc/
 [dyn-stat]: https://doc.rust-lang.org/cargo/reference/manifest.html#building-dynamic-or-static-libraries
 [rfc1510]: https://github.com/rust-lang/rfcs/blob/master/text/1510-cdylib.md
 [rust-1.10]: https://blog.rust-lang.org/2016/07/07/Rust-1.10.html
