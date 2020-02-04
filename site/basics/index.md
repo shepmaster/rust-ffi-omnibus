@@ -87,10 +87,10 @@ running Python examples, you may wish to use `py` instead of
 `python`, especially if you have multiple versions of Python
 installed.
 
-[official]: https://doc.rust-lang.org/book/ffi.html
+[official]: https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
 [Cargo]: https://crates.io/
 [libc]: http://doc.rust-lang.org/libc/libc/index.html
-[dyn-stat]: http://doc.crates.io/manifest.html#building-dynamic-or-static-libraries
+[dyn-stat]: https://doc.rust-lang.org/cargo/reference/manifest.html#building-dynamic-or-static-libraries
 [rfc1510]: https://github.com/rust-lang/rfcs/blob/master/text/1510-cdylib.md
 [rust-1.10]: https://blog.rust-lang.org/2016/07/07/Rust-1.10.html
 [rust-18807]: https://github.com/rust-lang/rust/issues/18807
