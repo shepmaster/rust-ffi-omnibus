@@ -18,7 +18,7 @@ fields of the struct as a C compiler would. The two conversion
 implementations use [`std::convert::From`][From] to provide ergonomic
 conversion between the struct and a corresponding tuple.
 
-[From]: http://doc.rust-lang.org/std/convert/trait.From.html
+[From]: https://doc.rust-lang.org/std/convert/trait.From.html
 
 ## C
 
@@ -57,10 +57,10 @@ arbitrary structs. Pointer indirection is always required.
 
 {% example src/main.js %}
 
-The [`ref-struct`][ref-struct] package allows us to build struct types
+The [`ref-struct-di`][ref-struct] package allows us to build struct types
 which can be passed to FFI functions.
 
-[ref-struct]: https://www.npmjs.com/package/ref-struct
+[ref-struct]: https://www.npmjs.com/package/ref-struct-di
 
 ## C\#
 

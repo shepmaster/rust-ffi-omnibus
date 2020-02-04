@@ -1,6 +1,6 @@
 extern crate libc;
 
-use libc::{c_char, uint32_t};
+use libc::c_char;
 use std::collections::HashMap;
 use std::ffi::CStr;
 
@@ -16,7 +16,7 @@ impl ZipCodeDatabase {
     }
 
     fn populate(&mut self) {
-        for i in 0..100000 {
+        for i in 0..100_000 {
             let zip = format!("{:05}", i);
             self.population.insert(zip, i);
         }
@@ -28,18 +28,22 @@ impl ZipCodeDatabase {
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_new() -> *mut ZipCodeDatabase {
+pub extern "C" fn zip_code_database_new() -> *mut ZipCodeDatabase {
     Box::into_raw(Box::new(ZipCodeDatabase::new()))
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
-    if ptr.is_null() { return }
-    unsafe { Box::from_raw(ptr); }
+pub extern "C" fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
+    if ptr.is_null() {
+        return;
+    }
+    unsafe {
+        Box::from_raw(ptr);
+    }
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
+pub extern "C" fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
     let database = unsafe {
         assert!(!ptr.is_null());
         &mut *ptr
@@ -48,7 +52,10 @@ pub extern fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: *const c_char) -> uint32_t {
+pub extern "C" fn zip_code_database_population_of(
+    ptr: *const ZipCodeDatabase,
+    zip: *const c_char,
+) -> u32 {
     let database = unsafe {
         assert!(!ptr.is_null());
         &*ptr

@@ -1,4 +1,4 @@
-const ffi = require('ffi');
+const ffi = require('ffi-napi');
 
 const lib = ffi.Library('libstring_arguments', {
   how_many_characters: ['uint32', ['string']],
