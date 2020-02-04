@@ -25,8 +25,3 @@ pub extern "C" fn counter_free(arr: *mut i16, size: size_t) {
         Vec::from_raw_parts(arr, size, size)
     };
 }
-
-#[allow(dead_code)]
-pub extern "C" fn fix_linking_when_not_using_stdlib() {
-    panic!()
-}

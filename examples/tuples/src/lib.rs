@@ -31,8 +31,3 @@ impl From<Tuple> for (u32, u32) {
 pub extern "C" fn flip_things_around(tup: Tuple) -> Tuple {
     flip_things_around_rust(tup.into()).into()
 }
-
-#[allow(dead_code)]
-pub extern "C" fn fix_linking_when_not_using_stdlib() {
-    panic!()
-}
