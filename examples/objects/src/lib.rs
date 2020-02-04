@@ -16,7 +16,7 @@ impl ZipCodeDatabase {
     }
 
     fn populate(&mut self) {
-        for i in 0..100000 {
+        for i in 0..100_000 {
             let zip = format!("{:05}", i);
             self.population.insert(zip, i);
         }

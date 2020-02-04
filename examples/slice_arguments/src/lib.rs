@@ -11,9 +11,8 @@ pub extern "C" fn sum_of_even(n: *const u32, len: size_t) -> u32 {
         slice::from_raw_parts(n, len as usize)
     };
 
-    let sum = numbers
+    numbers
         .iter()
         .filter(|&v| v % 2 == 0)
-        .fold(0, |acc, v| acc + v);
-    sum as u32
+        .sum()
 }
