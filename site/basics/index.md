@@ -18,9 +18,13 @@ example has the following boilerplate in `Cargo.toml`:
 
 {% example Cargo.toml %}
 
-`crate-type = ["cdylib"]` creates a dynamically linked library.
-Check out the Cargo documentation for
-[dynamic or static libraries][dyn-stat] for more information.
+In your project, you should pick a specific version for `libc`; the
+Omnibus uses a glob import along with a Cargo.lock file to make
+automated testing easier.
+
+`crate-type = ["cdylib"]` creates a dynamically linked library.  Check
+out the Cargo documentation for [dynamic or static
+libraries][dyn-stat] for more information.
 
 `cdylib` was [introduced in RFC 1510][rfc1510] and improves on the
 existing `dylib` with reduced file size and fewer exported symbols. It
