@@ -76,6 +76,11 @@ Python example, you might use
 `LD_LIBRARY_PATH=target/debug python src/main.py` from the example
 directory.
 
+Note that [System Integrity Protection][sip] on macOS may prevent
+setting `LD_LIBRARY_PATH` with system-provided binaries. You can
+either disable SIP or use a different binary from the one provided by
+the operating system.
+
 On Windows, the simplest course of action is to copy the compiled
 dynamic library into the current working directory before running the
 examples.  You only need the `.dll` file.  Also note that when
@@ -93,3 +98,4 @@ installed.
 [ctypes]: https://docs.python.org/3/library/ctypes.html
 [node-ffi]: https://www.npmjs.com/package/ffi-napi
 [julia-c]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code
+[sip]: https://support.apple.com/en-us/HT204899
