@@ -59,12 +59,12 @@ public class ZipCodeDatabase : IDisposable
 
     static public void Main()
     {
-          var db = new ZipCodeDatabase();
-          db.Populate();
+        var db = new ZipCodeDatabase();
+        db.Populate();
 
-          var pop1 = db.PopulationOf("90210");
-          var pop2 = db.PopulationOf("20500");
+        var pop1 = db.PopulationOf("90210");
+        var pop2 = db.PopulationOf("20500");
 
-          Console.WriteLine("{0}", pop1 - pop2);
+        Console.WriteLine("{0}", pop1 - pop2);
     }
 }

@@ -64,7 +64,7 @@ public class ThemeSong : IDisposable
 
     static public void Main()
     {
-          var song = new ThemeSong(5);
-          Console.WriteLine("{0}", song);
+        var song = new ThemeSong(5);
+        Console.WriteLine("{0}", song);
     }
 }
