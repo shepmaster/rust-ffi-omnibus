@@ -19,12 +19,16 @@ internal class ZipCodeDatabaseHandle : SafeHandle
 
     public override bool IsInvalid
     {
-        get { return false; }
+        get { return this.handle == IntPtr.Zero; }
     }
 
     protected override bool ReleaseHandle()
     {
-        Native.zip_code_database_free(handle);
+        if (!this.IsInvalid)
+        {
+            Native.zip_code_database_free(handle);
+        }
+
         return true;
     }
 }
@@ -55,12 +59,12 @@ public class ZipCodeDatabase : IDisposable
 
     static public void Main()
     {
-          var db = new ZipCodeDatabase();
-          db.Populate();
+        var db = new ZipCodeDatabase();
+        db.Populate();
 
-          var pop1 = db.PopulationOf("90210");
-          var pop2 = db.PopulationOf("20500");
+        var pop1 = db.PopulationOf("90210");
+        var pop2 = db.PopulationOf("20500");
 
-          Console.WriteLine("{0}", pop1 - pop2);
+        Console.WriteLine("{0}", pop1 - pop2);
     }
 }

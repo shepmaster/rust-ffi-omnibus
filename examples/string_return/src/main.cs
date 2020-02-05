@@ -16,7 +16,7 @@ internal class ThemeSongHandle : SafeHandle
 
     public override bool IsInvalid
     {
-        get { return false; }
+        get { return this.handle == IntPtr.Zero; }
     }
 
     public string AsString()
@@ -30,7 +30,11 @@ internal class ThemeSongHandle : SafeHandle
 
     protected override bool ReleaseHandle()
     {
-        Native.theme_song_free(handle);
+        if (!this.IsInvalid)
+        {
+            Native.theme_song_free(handle);
+        }
+
         return true;
     }
 }
@@ -60,7 +64,7 @@ public class ThemeSong : IDisposable
 
     static public void Main()
     {
-          var song = new ThemeSong(5);
-          Console.WriteLine("{0}", song);
+        var song = new ThemeSong(5);
+        Console.WriteLine("{0}", song);
     }
 }
