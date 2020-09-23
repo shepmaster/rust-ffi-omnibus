@@ -24,8 +24,8 @@ RUN \
         mono-devel='6.8.*' \
         nodejs='12.14.*' \
         python3.8 \
-        ruby2.6 \
-        ruby2.6-dev \
+        ruby2.7 \
+        ruby2.7-dev \
         \
         && rm -rf /var/lib/apt/lists/*
 
