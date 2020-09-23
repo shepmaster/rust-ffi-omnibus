@@ -51,7 +51,7 @@ language extension and only the `base` library which comes with GHC.
 
 ## Node.js
 
-All Node.js examples will use Node.js 12.14 and the [ffi-napi
+All Node.js examples will use Node.js 14.12 and the [ffi-napi
 package][node-ffi].
 
 ## C\#
