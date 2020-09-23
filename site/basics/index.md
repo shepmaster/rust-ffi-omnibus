@@ -56,7 +56,7 @@ package][node-ffi].
 
 ## C\#
 
-All C# examples will compile with Mono 6.8. It is assumed that this
+All C# examples will compile with Mono 6.12. It is assumed that this
 code will work with the Microsoft CLR frameworks, but this is
 untested.
 

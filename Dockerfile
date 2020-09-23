@@ -21,7 +21,7 @@ RUN \
         \
         && apt-get install -y \
         ghc-8.8.1 \
-        mono-devel='6.8.*' \
+        mono-devel='6.12.*' \
         nodejs='14.12.*' \
         python3.8 \
         ruby2.7 \
