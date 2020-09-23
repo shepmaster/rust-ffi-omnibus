@@ -14,18 +14,18 @@ RUN \
         && add-apt-repository -y ppa:deadsnakes/ppa \
         && add-apt-repository -y ppa:brightbox/ruby-ng \
         && add-apt-repository -y ppa:hvr/ghc \
-        && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+        && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
         && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
         && echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
         && apt-get update \
         \
         && apt-get install -y \
         ghc-8.8.1 \
-        mono-devel='6.8.*' \
-        nodejs='12.14.*' \
+        mono-devel='6.12.*' \
+        nodejs='14.12.*' \
         python3.8 \
-        ruby2.6 \
-        ruby2.6-dev \
+        ruby2.7 \
+        ruby2.7-dev \
         \
         && rm -rf /var/lib/apt/lists/*
 

@@ -38,7 +38,7 @@ All C examples will be compiled using the C11 standard.
 
 ## Ruby
 
-All Ruby examples will use Ruby 2.6 and the [FFI gem][gem].
+All Ruby examples will use Ruby 2.7 and the [FFI gem][gem].
 
 ## Python
 
@@ -51,12 +51,12 @@ language extension and only the `base` library which comes with GHC.
 
 ## Node.js
 
-All Node.js examples will use Node.js 12.14 and the [ffi-napi
+All Node.js examples will use Node.js 14.12 and the [ffi-napi
 package][node-ffi].
 
 ## C\#
 
-All C# examples will compile with Mono 6.8. It is assumed that this
+All C# examples will compile with Mono 6.12. It is assumed that this
 code will work with the Microsoft CLR frameworks, but this is
 untested.
 

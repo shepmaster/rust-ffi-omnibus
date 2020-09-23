@@ -14,8 +14,8 @@
     "eslint-config-google": "^0.10.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
-    "ffi-napi": "^2.4.0",
-    "ref-napi": "^1.4.0",
+    "ffi-napi": "^3.0.1",
+    "ref-napi": "^3.0.1",
     "ref-array-di": "^1.2.0",
     "ref-struct-di": "^1.1.0"
   }
