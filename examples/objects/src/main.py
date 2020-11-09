@@ -23,10 +23,7 @@ class ZipCodeDatabase:
     def __init__(self):
         self.obj = lib.zip_code_database_new()
 
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __del__(self):
         lib.zip_code_database_free(self.obj)
 
     def populate(self):
@@ -35,8 +32,8 @@ class ZipCodeDatabase:
     def population_of(self, zip):
         return lib.zip_code_database_population_of(self.obj, zip.encode('utf-8'))
 
-with ZipCodeDatabase() as database:
-    database.populate()
-    pop1 = database.population_of("90210")
-    pop2 = database.population_of("20500")
-    print(pop1 - pop2)
+database = ZipCodeDatabase()
+database.populate()
+pop1 = database.population_of("90210")
+pop2 = database.population_of("20500")
+print(pop1 - pop2)
