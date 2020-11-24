@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Slice Arguments - The Rust FFI Omnibus</title>
+  <meta name="description" content="A collection of examples of using Rust from other languages such as C, Ruby, or Python.
+">
+
+  <link rel="stylesheet" href="/rust-ffi-omnibus/css/main.css">
+  <link rel="canonical" href="http://jakegoulding.com/rust-ffi-omnibus/slice_arguments/">
+  <link rel="alternate" type="application/rss+xml" title="The Rust FFI Omnibus" href="http://jakegoulding.com/rust-ffi-omnibus/feed.xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/github-gist.min.css">
+  <script src="/rust-ffi-omnibus/script/main.js"></script>
+</head>
+
+
+  <body class="site">
+
+    <header class="site-header">
+
+  <a class="site-header-title" href="/rust-ffi-omnibus/">The Rust FFI Omnibus</a>
+
+</header>
+
+
+    <div class="site-content content">
+      <main class="content-content">
+        <h1 id="rust-functions-with-slice-arguments">Rust functions with slice arguments</h1>
+
+<p>Rust <em>slices</em> bundle the concept of a pointer to a chunk of data
+together with the number of elements. In C, arrays are composed of the
+same pieces, but there is no standard container that keeps them
+together.</p>
+
+<pre><code class="rust">extern crate libc;
+
+use libc::size_t;
+use std::slice;
+
+#[no_mangle]
+pub extern &quot;C&quot; fn sum_of_even(n: *const u32, len: size_t) -&gt; u32 {
+    let numbers = unsafe {
+        assert!(!n.is_null());
+
+        slice::from_raw_parts(n, len as usize)
+    };
+
+    numbers
+        .iter()
+        .filter(|&amp;v| v % 2 == 0)
+        .sum()
+}
+</code></pre>
+
+<p>Converting an array is a two-step process:</p>
+
+<ol>
+  <li>
+    <p>Assert that the C pointer is not <code class="language-plaintext highlighter-rouge">NULL</code> as Rust references may
+never be <code class="language-plaintext highlighter-rouge">NULL</code>.</p>
+  </li>
+  <li>
+    <p>Use <a href="https://doc.rust-lang.org/std/slice/fn.from_raw_parts.html"><code class="language-plaintext highlighter-rouge">from_raw_parts</code></a> to convert the pointer and
+length into a slice. This is an unsafe operation because we may be
+dereferencing invalid memory.</p>
+  </li>
+</ol>
+
+<h2 id="c">C</h2>
+
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;inttypes.h&gt;
+
+extern uint32_t
+sum_of_even(const uint32_t *numbers, size_t length);
+
+int main(void) {
+  uint32_t numbers[] = {1, 2, 3, 4, 5, 6};
+  size_t length = sizeof numbers / sizeof *numbers;
+  uint32_t sum = sum_of_even(numbers, length);
+  printf(&quot;%&quot; PRIu32 &quot;\n&quot;, sum);
+}
+</code></pre>
+
+<p>Calling from C is straight-forward, as we’ve made the Rust code match
+the capabilities of C. The only complication is ensuring that the
+number of elements is the same between the definition and the function
+call.</p>
+
+<h2 id="ruby">Ruby</h2>
+
+<pre><code class="ruby">require &#39;ffi&#39;
+
+module SliceArgumentsFFI
+  extend FFI::Library
+  ffi_lib &#39;slice_arguments&#39;
+  attach_function :sum_of_even, [:pointer, :size_t], :uint32
+end
+
+class SliceArguments
+  extend SliceArgumentsFFI
+
+  def self.sum_of_even(numbers)
+    buf = FFI::MemoryPointer.new(:uint32, numbers.size)
+    buf.write_array_of_uint32(numbers)
+    super(buf, numbers.size)
+  end
+end
+
+puts SliceArguments.sum_of_even([1,2,3,4,5,6])
+</code></pre>
+
+<p>Calling from Ruby requires more work than previous examples. This
+time, we use <a href="https://github.com/ffi/ffi/wiki/Pointers#memorypointer"><code class="language-plaintext highlighter-rouge">MemoryPointer</code></a> to allocate space to
+store our integers. Once created, we copy the values into it using
+<code class="language-plaintext highlighter-rouge">write_array_of_uint32</code>.</p>
+
+<h2 id="python">Python</h2>
+
+<pre><code class="python">#!/usr/bin/env python3
+
+import sys, ctypes
+from ctypes import POINTER, c_uint32, c_size_t
+
+prefix = {&#39;win32&#39;: &#39;&#39;}.get(sys.platform, &#39;lib&#39;)
+extension = {&#39;darwin&#39;: &#39;.dylib&#39;, &#39;win32&#39;: &#39;.dll&#39;}.get(sys.platform, &#39;.so&#39;)
+lib = ctypes.cdll.LoadLibrary(prefix + &quot;slice_arguments&quot; + extension)
+
+lib.sum_of_even.argtypes = (POINTER(c_uint32), c_size_t)
+lib.sum_of_even.restype = ctypes.c_uint32
+
+def sum_of_even(numbers):
+    buf_type = c_uint32 * len(numbers)
+    buf = buf_type(*numbers)
+    return lib.sum_of_even(buf, len(numbers))
+
+print(sum_of_even([1,2,3,4,5,6]))
+</code></pre>
+
+<p>Calling from Python requires more work than previous examples. This
+time, we create a new type to store our integers and instantiate the
+type using the values.</p>
+
+<h2 id="haskell">Haskell</h2>
+
+<pre><code class="haskell">{-# LANGUAGE ForeignFunctionInterface #-}
+
+import Data.Word (Word32)
+import Foreign (Ptr)
+import Foreign.Marshal.Array (withArrayLen)
+
+foreign import ccall &quot;sum_of_even&quot;
+  sum_of_even :: Ptr Word32 -&gt; Word32 -&gt; Word32
+
+main :: IO ()
+main = withArrayLen [1,2,3,4,5,6] $ \len arr -&gt;
+    print (sum_of_even arr (fromIntegral len))
+</code></pre>
+
+<p>For this example, we can use the <code class="language-plaintext highlighter-rouge">withArrayLen</code> function, which takes
+a Haskell array whose contents are <code class="language-plaintext highlighter-rouge">Storable</code> (i.e. serializable to
+byte sequences that C can understand) and produces a packed array of
+those values, which it then passes, along with the array’s length, to
+a callback function. In this case, it passes the array’s length as
+type <code class="language-plaintext highlighter-rouge">Int</code>, which we convert into the expected <code class="language-plaintext highlighter-rouge">CUInt</code> type using
+the <code class="language-plaintext highlighter-rouge">fromIntegral</code> function.</p>
+
+<h2 id="nodejs">Node.js</h2>
+
+<pre><code class="javascript">const ffi = require(&#39;ffi-napi&#39;);
+const ref = require(&#39;ref-napi&#39;);
+const array = require(&#39;ref-array-di&#39;)(ref);
+
+const U32array = array(ref.types.uint32);
+
+const lib = ffi.Library(&#39;libslice_arguments&#39;, {
+  sum_of_even: [&#39;uint32&#39;, [U32array, &#39;size_t&#39;]],
+});
+
+const numbers = new U32array([1, 2, 3, 4, 5, 6]);
+console.log(lib.sum_of_even(numbers, numbers.length));
+</code></pre>
+
+<p>We need to use the <a href="https://www.npmjs.com/package/ref-napi"><code class="language-plaintext highlighter-rouge">ref-napi</code></a> and <a href="https://www.npmjs.com/package/ref-array-di"><code class="language-plaintext highlighter-rouge">ref-array-di</code></a> packages
+to wrap Node.js memory buffers into array-like objects which can be easily
+manipulated from JavaScript. The <code class="language-plaintext highlighter-rouge">U32array</code> type (constructed using
+primitives from <code class="language-plaintext highlighter-rouge">ref.types</code>) can be then used in function signatures.</p>
+
+<h2 id="c-1">C#</h2>
+
+<pre><code class="csharp">using System;
+using System.Runtime.InteropServices;
+
+class SliceArguments
+{
+    [DllImport(&quot;slice_arguments&quot;)]
+    private static extern uint sum_of_even(int[] n, UIntPtr len);
+
+    public static uint SumOfEven(int[] n)
+    {
+        return sum_of_even(n, (UIntPtr)n.Length);
+    }
+
+    static public void Main()
+    {
+        var sum = SliceArguments.SumOfEven(new [] {1,2,3,4,5,6});
+        Console.WriteLine(sum);
+    }
+}
+</code></pre>
+
+<p>Passing an array is complicated a bit as we need to pass both a
+pointer to the data as well as the length of the array. Unlike
+previous examples, we bring in the non-idiomatic <code class="language-plaintext highlighter-rouge">snake_case</code> function
+as a private method. We can then add a public method that wraps the
+private one and provides the expected interface.</p>
+
+<p>The C code uses a <code class="language-plaintext highlighter-rouge">size_t</code>, a type whose size changes depending on
+the platform. To mirror that, we use a <code class="language-plaintext highlighter-rouge">UIntPtr</code>.</p>
+
+<h2 id="julia">Julia</h2>
+
+<pre><code class="">#!/usr/bin/env julia
+using Libdl
+
+libname = &quot;slice_arguments&quot;
+if !Sys.iswindows()
+    libname = &quot;lib$(libname)&quot;
+end
+
+lib = Libdl.dlopen(libname)
+sumofeven_sym = Libdl.dlsym(lib, :sum_of_even)
+
+sumofeven(a:: Array{UInt32}) = ccall(
+    sumofeven_sym,
+    UInt32,
+    (Ptr{UInt32}, Csize_t),
+    a,
+    length(a))
+
+println(sumofeven(UInt32[1, 2, 3, 4, 5, 6]))
+</code></pre>
+
+<p>Passing an array requires both a pointer and the length of the array.
+The array is implicitly converted to a pointer to the first element,
+of type <code class="language-plaintext highlighter-rouge">Ptr{UInt32}</code>. The type <code class="language-plaintext highlighter-rouge">Csize</code> is the Julia equivalent of
+<code class="language-plaintext highlighter-rouge">size_t</code>. We also enforce the function argument type to
+<code class="language-plaintext highlighter-rouge">Array{UInt32}</code>, which is the specific array type for which the native
+function is effectively compatible with.</p>
+
+<p>This example gets a bit more complicated because there are two
+primitive pointer types in Julia. <a href="julia-Ptr"><code class="language-plaintext highlighter-rouge">Ptr{T}</code></a> is a plain
+memory address to a value of type <code class="language-plaintext highlighter-rouge">T</code>, whereas <a href="julia-Ref"><code class="language-plaintext highlighter-rouge">Ref{T}</code></a>
+is a managed pointer to data that the Julia garbage collector will not
+free for as long as this <code class="language-plaintext highlighter-rouge">Ref</code> is referenced. These types will be
+converted to a C compatible pointer type in <code class="language-plaintext highlighter-rouge">ccall</code> in either case.</p>
+
+<p>While <a href="https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code/#When-to-use-T,-Ptr{T}-and-Ref{T}-1">it is preferred</a> to use <code class="language-plaintext highlighter-rouge">Ref</code> when passing
+arguments by pointer to native functions, and even more so when
+passing them via mutable pointers (so that the native function may
+modify the pointed object), C-style arrays are an exception
+to the rule, and should be passed with a plain <code class="language-plaintext highlighter-rouge">Ptr</code> and length.</p>
+
+
+      </main>
+
+      <nav class="content-navigation">
+        <ul>
+          
+            <li><a href="/rust-ffi-omnibus/">Index</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/basics/">Basics</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/integers/">Integers</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/string_arguments/">String Arguments</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/string_return/">String Return Values</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/slice_arguments/">Slice Arguments</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/tuples/">Tuples</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/objects/">Objects</a></li>
+          
+            <li><a href="/rust-ffi-omnibus/contributors/">Contributors</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="footer-meta">
+    <ul class="footer-meta-social-media">
+      <li>
+        <a href="https://github.com/shepmaster/rust-ffi-omnibus">
+          <span class="icon  icon--github">
+            <svg viewBox="0 0 16 16">
+              <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+            </svg>
+          </span>
+
+          <span class="username">rust-ffi-omnibus</span>
+        </a>
+      </li>
+
+      
+      <li>
+        <a href="https://twitter.com/jakegoulding">
+          <span class="icon  icon--twitter">
+            <svg viewBox="0 0 16 16">
+              <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                                      c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+            </svg>
+          </span>
+
+          <span class="username">jakegoulding</span>
+        </a>
+      </li>
+      
+    </ul>
+
+    <p class="footer-meta-description">A collection of examples of using Rust from other languages such as C, Ruby, or Python.
+</p>
+  </div>
+
+  <div class="footer-license">
+    <div class="footer-license-text">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+      </a>
+      The Rust FFI Omnibus is licensed under a
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+        Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+      </a>
+      The source code is licensed under the
+      <a rel="license" href="http://opensource.org/licenses/MIT">
+        MIT License.
+      </a>
+    </div>
+  </div>
+
+</footer>
+
+
+  </body>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/rust.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/haskell.min.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-20521797-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  
+</html>
