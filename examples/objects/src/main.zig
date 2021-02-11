@@ -1,4 +1,4 @@
-const print = @import("std").debug;
+const print = @import("std").debug.print;
 
 pub const ZipCodeDatabase = opaque {};
 
