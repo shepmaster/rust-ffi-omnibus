@@ -69,7 +69,7 @@ ENV PATH=/root/zig:$PATH
 RUN \
 	curl -s https://ziglang.org/download/index.json \
     | jq --raw-output '.master."x86_64-linux".tarball' \
-    | wget -q --show-progress -i - \
+    | wget -q --show-progress -i -
 	\
 	file=$(ls | grep '.tar.xz') \
 	\
