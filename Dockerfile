@@ -78,12 +78,6 @@ RUN \
     | jq ".master.\"$(uname -m)-$(uname | awk '{ print tolower($0) }')\"" \
     | jq -r .shasum) \
 	\
-	echo "Verify checksums:" \
-	if ! echo $SHASUM $file | sha256sum --check --status ; then \
-    		echo "Failed checksum for zig tarball"; \
-    		rm -rf $file \
-	fi \
-	\
 	tar -xf $file \
 	\
 	folder=$file \
