@@ -8,7 +8,7 @@ include ${COMMON_TEST_RULES}
 ${d}/c-example: LIB_DIR := ${LIB_DIR_${d}}
 ${d}/c-example: LIB_NAME := ${LIB_NAME_${d}}
 ${d}/c-example: ${d}/src/main.c ${LIB_${d}}
-	clang -std=c11 -pedantic -Wall -Werror -o $@ $< -L ${LIB_DIR} -l${LIB_NAME}
+	zig cc -std=c11 -pedantic -Wall -Werror -o $@ $< -L ${LIB_DIR} -l${LIB_NAME}
 
 # Save the example output into a file by running it
 ${TEST_DIR_${d}}/c-test: LIB_DIR := ${LIB_DIR_${d}}

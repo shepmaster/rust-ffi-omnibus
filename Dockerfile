@@ -7,8 +7,9 @@ RUN \
         \
         && apt-get install -y \
         build-essential \
-        clang \
         curl \
+	jq \
+	wget \
         software-properties-common \
         \
         && add-apt-repository -y ppa:deadsnakes/ppa \
@@ -17,15 +18,15 @@ RUN \
         && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
         && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
         && echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
-        && apt-get update \
+	&& apt-get update \
         \
         && apt-get install -y \
         ghc-8.8.1 \
-        mono-devel='6.12.*' \
-        nodejs='14.12.*' \
+        mono-devel \
+        nodejs \
         python3.8 \
         ruby2.7 \
-        ruby2.7-dev \
+        ruby2.7-dev \	
         \
         && rm -rf /var/lib/apt/lists/*
 
@@ -60,5 +61,41 @@ ENV USER=root
 ENV PATH=/root/.cargo/bin:$PATH
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable
+
+# Zig
+ENV USER=root
+ENV PATH=/root/zig:$PATH
+
+RUN \
+	curl -s https://ziglang.org/download/index.json \
+     | jq ".master.\"$(uname -m)-$(uname | awk '{ print tolower($0) }')\"" \
+     | jq -r .tarball \
+     | wget -q --show-progress -i - \
+	\
+	file=$(ls | grep '.tar.xz') \
+	\
+	SHASUM=$(curl -s https://ziglang.org/download/index.json \
+    | jq ".master.\"$(uname -m)-$(uname | awk '{ print tolower($0) }')\"" \
+    | jq -r .shasum) \
+	\
+	echo "Verify checksums:" \
+	if ! echo $SHASUM $file | sha256sum --check --status ; then \
+    		echo "Failed checksum for zig tarball"; \
+    		rm -rf $file \
+	fi \
+	\
+	tar -xf $file \
+	\
+	folder=$file \
+	\
+	folder=${folder%.*} \
+	\
+	rm $file \
+	\
+	mkdir -p /root/zig \
+	\
+	mv $folder/* /root/zig \
+	\
+	rm -rR $folder
 
 ADD . /omnibus
