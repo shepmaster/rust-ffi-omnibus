@@ -71,20 +71,21 @@ RUN \
     | jq --raw-output '.master."x86_64-linux".tarball' \
     | wget -q --show-progress -i -
 	\
-	file=$(ls | grep '.tar.xz') \
+	file=$(ls | grep '.tar.xz')
 	\
-	tar -xf $file \
+	tar -xf $file
 	\
-	folder=$file \
+	folder=$file
 	\
-	folder=${folder%.*} \
+	folder=${folder%.*}
 	\
-	rm $file \
+	rm $file
 	\
-	mkdir -p /root/zig \
+	mkdir -p /root/zig
 	\
-	mv $folder/* /root/zig \
+	mv $folder/* /root/zig
 	\
 	rm -rf $folder
+	\
 
 ADD . /omnibus
