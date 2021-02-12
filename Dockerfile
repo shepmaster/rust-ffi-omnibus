@@ -67,25 +67,17 @@ ENV USER=root
 ENV PATH=/root/zig:$PATH
 
 RUN \
-	curl -s https://ziglang.org/download/index.json \
+    curl -s https://ziglang.org/download/index.json \
     | jq --raw-output '.master."x86_64-linux".tarball' \
-    | wget -q --show-progress -i -
-	\
-	file=$(ls | grep '.tar.xz')
-	\
-	tar -xf $file
-	\
-	folder=$file
-	\
-	folder=${folder%.*}
-	\
-	rm $file
-	\
-	mkdir -p /root/zig
-	\
-	mv $folder/* /root/zig
-	\
-	rm -rf $folder
-	\
+    | wget -q --show-progress -i -; \
+    echo "Installing..." \
+    file=$(ls | grep '.tar.xz') \
+    tar -xf $file \
+    folder=$file \
+    folder=${folder%.*} \
+    rm $file \
+    mkdir -p /root/zig \
+    mv $folder/* /root/zig \
+    rm -rf $folder
 
 ADD . /omnibus
