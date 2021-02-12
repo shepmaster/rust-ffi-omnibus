@@ -68,15 +68,10 @@ ENV PATH=/root/zig:$PATH
 
 RUN \
 	curl -s https://ziglang.org/download/index.json \
-     | jq ".master.\"$(uname -m)-$(uname | awk '{ print tolower($0) }')\"" \
-     | jq -r .tarball \
-     | wget -q --show-progress -i - \
+    | jq --raw-output '.master."x86_64-linux".tarball' \
+    | wget -q --show-progress -i - \
 	\
 	file=$(ls | grep '.tar.xz') \
-	\
-	SHASUM=$(curl -s https://ziglang.org/download/index.json \
-    | jq ".master.\"$(uname -m)-$(uname | awk '{ print tolower($0) }')\"" \
-    | jq -r .shasum) \
 	\
 	tar -xf $file \
 	\
@@ -90,6 +85,6 @@ RUN \
 	\
 	mv $folder/* /root/zig \
 	\
-	rm -rR $folder
+	rm -rf $folder
 
 ADD . /omnibus
