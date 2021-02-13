@@ -70,14 +70,12 @@ RUN \
     curl -s https://ziglang.org/download/index.json \
     | jq --raw-output '.master."x86_64-linux".tarball' \
     | wget -q --show-progress -i -; \
-    echo "Installing..." \
-    file=$(ls | grep '.tar.xz') \
-    tar -xf $file \
+    file=$(ls | grep 'zig*.*.*') && \
+    tar -xvf $file &&\
     folder=$file \
-    folder=${folder%.*} \
-    rm $file \
-    mkdir -p /root/zig \
-    mv $folder/* /root/zig \
-    rm -rf $folder
+    folder=${folder%.*.*} \
+    && mkdir -p /root/zig &&\
+    mv -v $folder/* /root/zig &&\
+    rm -rvf $folder && echo "Zig version: $(zig version)"
 
 ADD . /omnibus
