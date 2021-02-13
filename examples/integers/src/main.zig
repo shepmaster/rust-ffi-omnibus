@@ -1,4 +1,4 @@
-const print = @import("std").debug;
+const print = @import("std").debug.print;
 
 pub extern fn addition(u32, u32) u32;
 
