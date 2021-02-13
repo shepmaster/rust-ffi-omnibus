@@ -8,7 +8,7 @@ include ${COMMON_TEST_RULES}
 ${d}/zig-example: LIB_DIR := ${LIB_DIR_${d}}
 ${d}/zig-example: LIB_NAME := ${LIB_NAME_${d}}
 ${d}/zig-example: ${d}/src/main.zig ${LIB_${d}}
-	zig build-exe $< -L ${LIB_DIR} -l${LIB_NAME} -lc
+	zig build-exe --name $@ $< -L ${LIB_DIR} -l${LIB_NAME} -lc
 
 # Save the example output into a file by running it
 ${TEST_DIR_${d}}/zig-test: LIB_DIR := ${LIB_DIR_${d}}
