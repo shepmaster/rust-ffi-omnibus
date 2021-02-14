@@ -122,7 +122,7 @@ directory and running `julia src\main.jl`.
 
 The `!` suffix is used to indicate that the function may return an
 expected value or enum error by the keyword `try`. In Rust it would
-be the equivalent of `Result<Value,Err>` and `.unwrap()`.
+be the equivalent of `Result<T,E>` and using `.unwrap()` or `.?`.
 We start by declaring an `extern` function with the proper argument
 and return types. This can then be compiled and linked against the
 Rust library using `zig build-exe --name zig-example src/main.zig -L
