@@ -115,3 +115,20 @@ Windows by copying `target\debug\integers.dll` to the current
 directory and running `julia src\main.jl`.
 
 [ccall]: https://docs.julialang.org/en/v1/base/c/#ccall
+
+## Zig
+
+{% example src/main.zig %}
+
+The `!` suffix is used to indicate that the function may return an
+expected value or enum error by the keyword `try`. In Rust it would
+be the equivalent of `Result<T,E>` and using `.unwrap()` or `.?`.
+We start by declaring an `extern` function with the proper argument
+and return types. This can then be compiled and linked against the
+Rust library using `zig build-exe --name zig-example src/main.zig -L
+target/debug/ -lintegers`.
+
+As noted in the basics section, this can be run on macOS and Linux
+with `LD_LIBRARY_PATH=target/debug/ ./zig-example`, and on Windows by
+copying `target\debug\integers.dll` to the current directory and
+running `.\zig-example`.

@@ -97,3 +97,18 @@ Julia strings (of base type `AbstractString`) are automatically
 converted to C strings. The `Cstring` type from Julia is compatible
 with the Rust type `CStr`, as it also assumes a `NUL` terminator byte
 and does not allow `NUL` bytes embedded in the string.
+
+## Zig
+
+{% example src/main.zig %}
+
+The Zig code declares the function to accept a pointer to a constant
+string, as the Rust function will not modify it. You can then call the
+function with a normal C string constant.
+Unlike the aforementioned pointers, C pointers cannot deal with specially
+aligned data, and may point to the address 0. C pointers coerce back and
+forth between integers, and also coerce to single and multi item pointers.
+When a C pointer of value 0 is coerced to a non-optional pointer, this is
+detectable illegal behaviour.
+Outside of automatically translated C code, the usage of `[*c]` is almost
+always a bad idea, and should almost never be used.
