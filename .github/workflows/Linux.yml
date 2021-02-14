@@ -47,13 +47,13 @@ jobs:
       - name: Site
         run: |
               cd site \
-              && sudo bundle && sudo jekyll build --destination /built-site --config _config.yml,_config.prod.yml
+              && sudo bundle && sudo jekyll build --destination ../public --config _config.yml,_config.prod.yml
       
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
-          build_dir: site
+          build_dir: public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
