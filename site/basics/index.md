@@ -67,8 +67,8 @@ built-in [C function calling capabilities][julia-c].
 
 ## Zig
 
-Zig has been designed from the ground up with C interop as a firstclass feature.
-In this section we will go over how this works. [Working with C][ziglearn]
+All Zig examples will use Zig 0.7.1. Zig has been designed from the ground
+up with C interop as a firstclass feature [Working with C][ziglearn].
 
 ## Running Examples
 
@@ -105,4 +105,3 @@ installed.
 [julia-c]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code
 [sip]: https://support.apple.com/en-us/HT204899
 [ziglearn]: https://ziglearn.org/chapter-4/
-
