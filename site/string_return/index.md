@@ -96,3 +96,12 @@ by Julia, and transfers the Rust string back afterwards. The
 resource is kept alive in Julia.
 
 [julia-objects]: ../objects#julia
+
+## Zig
+
+{% example src/main.zig %}
+
+There's not much interesting for the C version: the `[*c]u8` equivalent
+of `char *` C type is returned, can be printed, and then is transferred
+back to be freed. The usage of `[*c]` is almost always a bad idea, and
+should almost never be used.

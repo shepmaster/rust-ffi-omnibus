@@ -1,4 +1,4 @@
-const print = @import("std").debug.print;
+const print = @import("std").io.getStdOut().writer().print;
 
 const tuple_t = extern struct {
     x: u32,
@@ -7,11 +7,11 @@ const tuple_t = extern struct {
 
 pub extern fn flip_things_around(tuple_t) tuple_t;
 
-pub fn main() void {
+pub fn main() !void {
     var initial: tuple_t = tuple_t{
         .x = 10,
         .y = 20,
     };
     var result: tuple_t = flip_things_around(initial);
-    print("({},{})\n", .{ result.x, result.y });
+    try print("({},{})\n", .{ result.x, result.y });
 }

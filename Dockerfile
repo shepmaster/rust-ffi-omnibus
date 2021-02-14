@@ -3,9 +3,9 @@ FROM ubuntu:18.04
 SHELL ["bash", "-c"]
 
 RUN \
-        apt-get update \
+        apt update \
         \
-        && apt-get install -y \
+        && apt install -y \
         build-essential \
         curl \
 	jq \
@@ -18,9 +18,9 @@ RUN \
         && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
         && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
         && echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
-	&& apt-get update \
+	&& apt update \
         \
-        && apt-get install -y \
+        && apt install -y \
         ghc-8.8.1 \
         mono-devel \
         nodejs \
@@ -63,6 +63,7 @@ ENV PATH=/root/.cargo/bin:$PATH
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable
 
 # Zig
+
 ENV USER=root
 ENV PATH=/root/zig:$PATH
 

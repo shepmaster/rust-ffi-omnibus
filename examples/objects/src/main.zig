@@ -1,4 +1,4 @@
-const print = @import("std").debug.print;
+const print = @import("std").io.getStdOut().writer().print;
 
 pub const ZipCodeDatabase = opaque {};
 
@@ -10,7 +10,7 @@ pub extern fn zip_code_database_populate(ptr: ?*ZipCodeDatabase) void;
 
 pub extern fn zip_code_database_population_of(ptr: ?*const ZipCodeDatabase, zip: [*c]const u8) u32;
 
-pub fn main() void {
+pub fn main() !void {
     var database: ?*ZipCodeDatabase = zip_code_database_new();
 
     zip_code_database_populate(database);
@@ -20,5 +20,5 @@ pub fn main() void {
 
     zip_code_database_free(database);
 
-    print("{}\n", .{pop1 - pop2});
+    try print("{}\n", .{pop1 - pop2});
 }

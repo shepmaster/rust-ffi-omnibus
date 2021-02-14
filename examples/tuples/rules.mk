@@ -8,7 +8,7 @@ include ${TEST_RUBY}
 include ${TEST_PYTHON}
 include ${TEST_NODEJS}
 include ${TEST_CSHARP}
-include ${TEST_ZIG}
+# include ${TEST_ZIG}
 
 d  := ${dirstack_${sp}}
 sp := ${basename ${sp}}

@@ -81,3 +81,10 @@ will store each member inline and will be passed to the native
 function by value.
 
 [julia-isbits]: https://docs.julialang.org/en/v1/base/base/#Base.isbits
+
+## Zig
+
+{% example src/main.zig %}
+
+Normal structs in Zig do not have a defined layout, but `extern` structs are required
+for when you want the layout of your struct to match the layout of your C ABI.

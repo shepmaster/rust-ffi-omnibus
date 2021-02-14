@@ -166,3 +166,15 @@ creating and freeing the object. With the `do` syntax, the user code
 becomes similar to one using Python's `with` syntax. Alternatively,
 the programmer can use the other constructor and call the method
 `close` when it is no longer needed.
+
+## Zig
+
+{% example src/main.zig %}
+
+A dummy struct is created to provide a small amount of type-safety.
+
+Declaring the structure as an `opaque` type that will serve as the
+interface. As with the previous examples the external functions are
+declared later.
+However, the great trick here is the use of optional pointers (`?*`)
+that can return either a null value or the value of the object.

@@ -1,8 +1,8 @@
-const print = @import("std").debug.print;
+const print = @import("std").io.getStdOut().writer().print;
 
 pub extern fn addition(u32, u32) u32;
 
-pub fn main() void {
+pub fn main() !void {
     var sum: u32 = addition(1, 2);
-    print("{}\n", .{sum});
+    try print("{}\n", .{sum});
 }

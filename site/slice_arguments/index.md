@@ -116,3 +116,13 @@ to the rule, and should be passed with a plain `Ptr` and length.
 [julia-Ptr]: https://docs.julialang.org/en/v1/base/c/#Core.Ptr
 [julia-Ref]: https://docs.julialang.org/en/v1/base/c/#Core.Ref
 [julia-refptr]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code/#When-to-use-T,-Ptr{T}-and-Ref{T}-1
+
+## Zig
+
+{% example src/main.zig %}
+
+Calling from Zig is straight-forward, as we've made the Rust code match
+the capabilities of Zig. Arrays use the syntax [N]T, where N (a natural number)
+is the number of elements, and T is the type of the elements, the so-called
+“child type” of the array. The N in the case of array literals may be swapped
+out by `_` for when inferred length is desirable.
