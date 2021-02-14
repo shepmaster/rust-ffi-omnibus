@@ -15,6 +15,6 @@ pub fn main() !void {
         defer i += 1;
     }
 
-    print("\n", .{});
+    try print("\n", .{});
     counter_free(vec, vec_len);
 }
