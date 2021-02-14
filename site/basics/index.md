@@ -65,6 +65,11 @@ untested.
 All Julia examples will use Julia 1.3, and rely on the language's
 built-in [C function calling capabilities][julia-c].
 
+## Zig
+
+Zig has been designed from the ground up with C interop as a firstclass feature.
+In this section we will go over how this works. [Working with C][ziglearn]
+
 ## Running Examples
 
 When running examples, you need to ensure the Rust dynamic library
@@ -99,3 +104,5 @@ installed.
 [node-ffi]: https://www.npmjs.com/package/ffi-napi
 [julia-c]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code
 [sip]: https://support.apple.com/en-us/HT204899
+[ziglearn]: https://ziglearn.org/chapter-4/
+
