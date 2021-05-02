@@ -26,6 +26,8 @@ RUN \
         python3.8 \
         ruby2.7 \
         ruby2.7-dev \
+        perl \
+        cpanminus \
         \
         && rm -rf /var/lib/apt/lists/*
 

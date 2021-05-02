@@ -116,3 +116,9 @@ to the rule, and should be passed with a plain `Ptr` and length.
 [julia-Ptr]: https://docs.julialang.org/en/v1/base/c/#Core.Ptr
 [julia-Ref]: https://docs.julialang.org/en/v1/base/c/#Core.Ref
 [julia-refptr]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code/#When-to-use-T,-Ptr{T}-and-Ref{T}-1
+
+## Perl
+
+{% example src/main.pl %}
+
+TODO

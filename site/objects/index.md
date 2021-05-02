@@ -166,3 +166,9 @@ creating and freeing the object. With the `do` syntax, the user code
 becomes similar to one using Python's `with` syntax. Alternatively,
 the programmer can use the other constructor and call the method
 `close` when it is no longer needed.
+
+## Perl
+
+{% example src/main.pl %}
+
+TODO
