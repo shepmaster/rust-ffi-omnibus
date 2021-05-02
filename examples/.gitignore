@@ -19,3 +19,7 @@ test-output/
 
 # C#
 */csharp-example
+
+# Perl
+.perl-dependencies
+/local

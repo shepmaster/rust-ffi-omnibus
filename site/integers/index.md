@@ -115,3 +115,9 @@ Windows by copying `target\debug\integers.dll` to the current
 directory and running `julia src\main.jl`.
 
 [ccall]: https://docs.julialang.org/en/v1/base/c/#ccall
+
+## Perl
+
+{% example src/main.pl %}
+
+TODO

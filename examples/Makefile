@@ -49,6 +49,7 @@ TEST_HASKELL := tests_haskell.mk
 TEST_NODEJS := tests_nodejs.mk
 TEST_CSHARP := tests_csharp.mk
 TEST_JULIA := tests_julia.mk
+TEST_PERL := tests_perl.mk
 TEST_ALL_LANGUAGES := tests_all.mk
 
 dir := integers
@@ -66,7 +67,7 @@ include ${dir}/rules.mk
 dir := vector_return
 include ${dir}/rules.mk
 
-all: c ruby python haskell nodejs csharp julia
+all: c ruby python haskell nodejs csharp julia perl
 .PHONY: all
 
 # Test only a single language
@@ -81,5 +82,6 @@ haskell:
 nodejs:
 csharp:
 julia:
+perl:
 
-.PHONY: c ruby python haskell nodejs csharp julia
+.PHONY: c ruby python haskell nodejs csharp julia perl

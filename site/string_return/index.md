@@ -96,3 +96,9 @@ by Julia, and transfers the Rust string back afterwards. The
 resource is kept alive in Julia.
 
 [julia-objects]: ../objects#julia
+
+## Perl
+
+{% example src/main.pl %}
+
+TODO

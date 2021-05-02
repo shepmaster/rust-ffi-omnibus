@@ -97,3 +97,9 @@ Julia strings (of base type `AbstractString`) are automatically
 converted to C strings. The `Cstring` type from Julia is compatible
 with the Rust type `CStr`, as it also assumes a `NUL` terminator byte
 and does not allow `NUL` bytes embedded in the string.
+
+## Perl
+
+{% example src/perl.pl %}
+
+TODO

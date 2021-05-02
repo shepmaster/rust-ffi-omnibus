@@ -81,3 +81,9 @@ will store each member inline and will be passed to the native
 function by value.
 
 [julia-isbits]: https://docs.julialang.org/en/v1/base/base/#Base.isbits
+
+## Perl
+
+{% example src/main.pl %}
+
+TODO

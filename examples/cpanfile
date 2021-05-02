@@ -1,0 +1,3 @@
+requires 'FFI::Platypus', '1.00';
+requires 'FFI::Platypus::Lang::Rust';
+requires 'FFI::Platypus::Type::PtrObject';
