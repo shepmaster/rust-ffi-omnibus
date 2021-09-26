@@ -79,11 +79,6 @@ We follow a similar pattern to the object example: the Rust string is
 contained within a subclass of `SafeHandle` and a wrapper class
 `ThemeSong` ensures that the handle is disposed properly.
 
-Unfortunately, there is no easy way to read the pointer as a UTF-8
-string. C\# has cases for ANSI strings and for "Unicode" strings
-(really UCS-2), but nothing for UTF-8. We need to write that
-ourselves.
-
 ## Julia
 
 {% example src/main.jl %}
